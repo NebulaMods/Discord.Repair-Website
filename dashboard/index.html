@@ -93,6 +93,7 @@
         </a>
       </nav>
       <a
+        id="upgrade-link"
         href="#"
         class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4"
       >
@@ -110,7 +111,7 @@
             @click="isOpen = !isOpen"
             class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none"
           >
-            <img src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400" />
+            <img id="pfp-img" />
           </button>
           <button
             x-show="isOpen"
@@ -397,13 +398,6 @@
             </div>
           </div>
         </main>
-
-        <footer class="w-full bg-white text-right p-4">
-          Built by
-          <a target="_blank" href="https://davidgrzyb.com" class="underline"
-            >David Grzyb</a
-          >.
-        </footer>
       </div>
     </div>
 

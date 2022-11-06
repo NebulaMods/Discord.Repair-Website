@@ -5,6 +5,7 @@ window.addEventListener("load", () => {
     XHR.addEventListener("load", (event) => {
       var jsonData = JSON.parse(event.target.responseText);
       window.sessionStorage.setItem("PFP", jsonData.pfp);
+      window.sessionStorage.setItem("AccountType", jsonData.accountType);
     });
     XHR.addEventListener("error", (event) => {
       console.log(event.target.responseText);
@@ -13,5 +14,18 @@ window.addEventListener("load", () => {
     XHR.setRequestHeader("Authorization", authToken);
     XHR.send();
   }
+  function setPfp() {
+    var imgTag = document.getElementById("pfp-img");
+    imgTag.setAttribute("src", window.sessionStorage.getItem("PFP"));
+  }
+  function removeUpgradeLink() {
+    var accountType = window.sessionStorage.getItem("AccountType");
+    if (accountType == "Staff" || accountType == "Paid") {
+      var upgradeTag = document.getElementById("upgrade-link");
+      upgradeTag.style.display = "none";
+    }
+  }
   getUserInfo();
+  setPfp();
+  removeUpgradeLink();
 });

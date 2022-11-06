@@ -17,9 +17,14 @@ window.addEventListener("load", () => {
     XHR.addEventListener("load", (event) => {
       window.location.replace("http://localhost:5500/dashboard/index.html");
       var jsonData = JSON.parse(event.target.responseText);
-      sessionStorage.setItem("Authorization", jsonData.details);
-      let token = sessionStorage.getItem("Authorization");
-      console.log(token);
+      if (jsonData.success) {
+        sessionStorage.setItem("Authorization", jsonData.details);
+        let token = sessionStorage.getItem("Authorization");
+        console.log(token);
+      } else {
+        alert(jsonData.details);
+        grecaptcha.reset();
+      }
       //alert(event.target.responseText);
     });
 
