@@ -8,13 +8,12 @@
     <meta name="description" content="" />
 
     <!-- Tailwind -->
-    <script async src="/content/js/login-check.js"></script>
-    <script async src="/content/js/dashboard.js"></script>
+    <script async src="/content/js/dash-utils.js"></script>
+
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
       rel="stylesheet"
     />
-    <script async src="/content/js/sign-out.js"></script>
     <style>
       @import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
       .font-family-karla {
@@ -201,6 +200,7 @@
             Sign Out
           </a>
           <button
+            id="upgrade-link-mobile"
             class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center"
           >
             <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
@@ -418,7 +418,6 @@
       integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI="
       crossorigin="anonymous"
     ></script>
-
     <script>
       var chartOne = document.getElementById("chartOne");
       var myChart = new Chart(chartOne, {

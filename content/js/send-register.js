@@ -1,36 +1,4 @@
 window.addEventListener("load", () => {
-  function sendData() {
-    const XHR = new XMLHttpRequest();
-    // Bind the FormData object and the form element
-    const FD = new FormData(form);
-    var captchaCode = grecaptcha.getResponse();
-    //Add extra data to form before submission.
-    FD.append("captchaCode", captchaCode);
-    // Define what happens on successful data submission
-    XHR.addEventListener("load", (event) => {
-      alert(event.target.responseText);
-    });
-
-    // Define what happens in case of error
-    XHR.addEventListener("error", (event) => {
-      alert("Oops! Something went wrong.");
-    });
-
-    // Set up our request
-    XHR.open("PUT", "https://api.discord.repair/v1/user");
-    XHR.setRequestHeader("Content-Type", "application/json");
-    var json = JSON.stringify(Object.fromEntries(FD));
-    //console.log(json);
-    const jsonRequest = JSON.parse(json);
-    var byteArr = str2ByteArr(jsonRequest.password);
-    var idk = arrayBufferToBase64(byteArr);
-    jsonRequest.password = idk;
-    // The data sent is what the user provided in the form
-    json = JSON.stringify(jsonRequest);
-    console.log(json);
-    XHR.send(json);
-  }
-
   // Get the form element
   const form = document.getElementById("myForm");
 
@@ -38,9 +6,50 @@ window.addEventListener("load", () => {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    sendData();
+    sendData(form);
   });
 });
+
+async function sendData(form) {
+  const XHR = new XMLHttpRequest();
+  // Bind the FormData object and the form element
+  const FD = new FormData(form);
+  var captchaCode = grecaptcha.getResponse();
+  //Add extra data to form before submission.
+  FD.append("captchaCode", captchaCode);
+  // Define what happens on successful data submission
+  XHR.addEventListener("load", (event) => {
+    var jsonData = JSON.parse(event.target.responseText);
+    if (jsonData.success) {
+      window.location.replace("https://discord.repair/login.html");
+    } else {
+      alert(jsonData.details);
+      return;
+    }
+  });
+
+  // Define what happens in case of error
+  XHR.addEventListener("error", (event) => {
+    var jsonData = JSON.parse(event.target.responseText);
+    if (jsonData != null || !jsonData.success) {
+      alert(jsonData.details);
+      return;
+    }
+    alert("An error occured while trying to register, please try again.");
+  });
+
+  // Set up our request
+  XHR.open("PUT", "https://api.discord.repair/v1/user");
+  XHR.setRequestHeader("Content-Type", "application/json");
+  var json = JSON.stringify(Object.fromEntries(FD));
+  //console.log(json);
+  const jsonRequest = JSON.parse(json);
+  var byteArr = str2ByteArr(jsonRequest.password);
+  jsonRequest.password = arrayBufferToBase64(byteArr);
+  // The data sent is what the user provided in the form
+  json = JSON.stringify(jsonRequest);
+  XHR.send(json);
+}
 
 function str2ByteArr(str) {
   var bytes = [];
