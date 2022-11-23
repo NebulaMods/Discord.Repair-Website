@@ -3,21 +3,23 @@ window.addEventListener("DOMContentLoaded", async () => {
   setPfp();
   removeUpgradeLink();
 });
-function setPfp() {
-  var imgTag = document.getElementById("pfp-img");
-  imgTag.setAttribute("src", window.sessionStorage.getItem("PFP"));
+async function setPfp() {
+  try {
+    let imgTag = document.getElementById("pfp-img");
+    imgTag.setAttribute("src", window.sessionStorage.getItem("PFP"));
+  } catch (e) {}
 }
-function removeUpgradeLink() {
-  var accountType = window.sessionStorage.getItem("AccountType");
+async function removeUpgradeLink() {
+  let accountType = window.sessionStorage.getItem("AccountType");
   if (accountType == "Staff" || accountType == "Paid") {
-    var upgradeTag = document.getElementById("upgrade-link");
-    var upgradeTagMobile = document.getElementById("upgrade-link-mobile");
+    let upgradeTag = document.getElementById("upgrade-link");
+    let upgradeTagMobile = document.getElementById("upgrade-link-mobile");
     upgradeTagMobile.style.display = "none";
     upgradeTag.style.display = "none";
   }
 }
 async function checkLogin() {
-  var loggedIn = window.sessionStorage.getItem("Authorization");
+  let loggedIn = window.sessionStorage.getItem("Authorization");
   if (loggedIn == null) {
     window.location.replace("https://discord.repair/login.html");
     return;

@@ -2,17 +2,23 @@
 <html lang="en">
   <head>
     <script defer src="/content/js/dash-utils.js"></script>
-    <title>Users | Dashboard</title>
+    <title>Help | Dashboard</title>
 
     <!--#region Meta Data-->
     <meta charset="UTF-8" />
-    <meta property="og:title" content="Users | Dashboard" />
+    <meta property="og:title" content="Help | Dashboard" />
     <meta
       property="og:url"
-      content="https://discord.repair/dashboard/users.html"
+      content="https://discord.repair/dashboard/help.html"
     />
-    <meta property="og:site_name" content="Manage your linked users." />
-    <meta name="og:description" content="Manage your linked users." />
+    <meta
+      property="og:site_name"
+      content="Read or watch tutorials/guides on how to use Discord.Repair."
+    />
+    <meta
+      name="og:description"
+      content="Read or watch tutorials/guides on how to use Discord.Repair."
+    />
     <meta
       name="og:image"
       content="https://discord.repair./content/images/logo.png"
@@ -20,14 +26,20 @@
     <meta name="twitter:card" content="summary_small_image" />
     <meta
       property="twitter:url"
-      content="https://discord.repair/dashboard/users.html"
+      content="https://discord.repair/dashboard/help.html"
     />
     <meta
       name="twitter:image"
       content="https://discord.repair/content/images/logo.png"
     />
-    <meta name="twitter:description" content="Manage your linked users." />
-    <meta name="description" content="Manage your linked users." />
+    <meta
+      name="twitter:description"
+      content="Read or watch tutorials/guides on how to use Discord.Repair."
+    />
+    <meta
+      name="description"
+      content="Read or watch tutorials/guides on how to use Discord.Repair."
+    />
     <meta name="theme-color" content="#3d68ff" />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="window-target" content="_top" />
@@ -70,7 +82,6 @@
       type="image/x-icon"
       href="https://discord.repair/content/images/logo.png"
     />
-    <script defer src="/content/js/users.js"></script>
 
     <!--#endregion-->
 
@@ -143,14 +154,14 @@
         </a>
         <a
           href="users.html"
-          class="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
           <i class="fas fa-align-left mr-3"></i>
           Users
         </a>
         <a
           href="help.html"
-          class="flex items-center text-white py-4 pl-6 nav-item"
+          class="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
         >
           <i class="fas fa-align-left mr-3"></i>
           Help
@@ -259,9 +270,9 @@
           </a>
           <a
             href="help.html"
-            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+            class="flex items-center active-nav-link text-white py-2 pl-4 nav-item"
           >
-            <i class="fas fa-align-left mr-3"></i>
+            <i class="fas fa-tablet-alt mr-3"></i>
             Help
           </a>
           <a
@@ -292,7 +303,90 @@
 
       <div class="w-full overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6">
-          <p style="text-align: center">Coming Soon!</p>
+          <h1 class="text-3xl text-black pb-6">Help</h1>
+          <center>
+            <div class="w-full mt-6" x-data="{ openTab: 1 }">
+              <div>
+                <ul class="flex border-b">
+                  <li class="-mb-px mr-1" @click="openTab = 1">
+                    <a
+                      :class="openTab === 1 ? 'border-l border-t border-r rounded-t text-blue-700 font-semibold' : 'text-blue-500 hover:text-blue-800'"
+                      class="bg-white inline-block py-2 px-4 font-semibold"
+                      href="#"
+                      >General</a
+                    >
+                  </li>
+                  <li class="mr-1" @click="openTab = 2">
+                    <a
+                      :class="openTab === 2 ? 'border-l border-t border-r rounded-t text-blue-700 font-semibold' : 'text-blue-500 hover:text-blue-800'"
+                      class="bg-white inline-block py-2 px-4 font-semibold"
+                      href="#"
+                      >Bot Setup</a
+                    >
+                  </li>
+                  <li class="mr-1" @click="openTab = 3">
+                    <a
+                      :class="openTab === 3 ? 'border-l border-t border-r rounded-t text-blue-700 font-semibold' : 'text-blue-500 hover:text-blue-800'"
+                      class="bg-white inline-block py-2 px-4 font-semibold"
+                      href="#"
+                      >Server Setup</a
+                    >
+                  </li>
+                  <li class="mr-1" @click="openTab = 4">
+                    <a
+                      :class="openTab === 4 ? 'border-l border-t border-r rounded-t text-blue-700 font-semibold' : 'text-blue-500 hover:text-blue-800'"
+                      class="bg-white inline-block py-2 px-4 font-semibold"
+                      href="#"
+                      >Migrating</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="bg-white p-6">
+                <div id="" class="" x-show="openTab === 1">
+                  Check out how to setup a bot.
+                </div>
+                <div id="" class="" x-show="openTab === 2">
+                  Find Bot Information Finding some required information about
+                  your bot might be hard, but we will guide you through it. #Bot
+                  Token After creating a Bot, click on "Reset Token" to reveal
+                  its secret Tokens.
+                  <img
+                    src="https://docs.restorecord.com/static/botsetup/bot_token.png"
+                  />
+
+                  #Client ID Click on OAuth2 and copy the Client ID.
+                  <img
+                    src="https://docs.restorecord.com/static/botsetup/client_id.png"
+                  />
+
+                  #Client Secret Click on OAuth2, on the right-hand side of the
+                  screen, under CLIENT SECRET, click "Reset Secret".
+                  <img
+                    src="https://docs.restorecord.com/static/botsetup/bot_secret.png"
+                  />
+
+                  #Setup Privileged Gateway Intents Setting up Privileged
+                  Gateway Intents might help your bot pull members faster and
+                  for future updates! Scroll down and toggle every Intent
+                  available:
+                  <img
+                    src="https://docs.restorecord.com/static/botsetup/intents.png"
+                  />
+
+                  Setup OAuth2 Redirect Redirect URL:
+                  https://api.discord.repair/v1/discord-user/link <br />After
+                  creating an Application on the Discord Developer Portal, go to
+                  the OAuth2 tab and add a Redirect URL.
+                  <img
+                    src="https://cdn.nebulamods.ca/cracked-by-nebula-ca/png/I87QAVL8.png"
+                  />
+                </div>
+                <div id="" class="" x-show="openTab === 3"></div>
+                <div id="" class="" x-show="openTab === 4"></div>
+              </div>
+            </div>
+          </center>
         </main>
       </div>
     </div>

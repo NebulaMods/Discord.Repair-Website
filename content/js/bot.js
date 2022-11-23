@@ -1,15 +1,20 @@
+window.addEventListener("load", () => {
+  getBots();
+});
+
 async function createBot() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["botForm"];
+  var form = document.forms["createBotForm"];
   const FD = new FormData(form);
   XHR.addEventListener("load", (event) => {
     var jsonData = JSON.parse(event.target.responseText);
-    document.forms["botForm"]["name"].value = jsonData.name;
-    document.forms["botForm"]["key"].value = jsonData.key;
-    document.forms["botForm"]["token"].value = jsonData.token;
-    document.forms["botForm"]["clientSecret"].value = jsonData.clientSecret;
-    document.forms["botForm"]["clientId"].value = jsonData.clientId;
-    document.forms["botForm"]["botType"].value = jsonData.botType;
+    document.forms["createBotForm"]["name"].value = jsonData.name;
+    document.forms["createBotForm"]["key"].value = jsonData.key;
+    document.forms["createBotForm"]["token"].value = jsonData.token;
+    document.forms["createBotForm"]["clientSecret"].value =
+      jsonData.clientSecret;
+    document.forms["createBotForm"]["clientId"].value = jsonData.clientId;
+    document.forms["createBotForm"]["botType"].value = jsonData.botType;
   });
   XHR.addEventListener("error", (event) => {
     var jsonData = JSON.parse(event.target.responseText);
@@ -31,7 +36,7 @@ async function createBot() {
 
 async function modifyBot() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["botForm"];
+  var form = document.forms["modifyBotForm"];
   const FD = new FormData(form);
   XHR.addEventListener("load", (event) => {
     var jsonData = JSON.parse(event.target.responseText);
@@ -72,7 +77,7 @@ async function modifyBot() {
 
 async function deleteBot() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["botForm"]["name"].value;
+  var form = document.forms["deleteBotForm"]["name"].value;
   console.log(form);
   if (form == null || form.length == 0) {
     return;
@@ -95,21 +100,22 @@ async function deleteBot() {
 
 async function getBot() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["botForm"]["name"].value;
+  var form = document.forms["modifyBotForm"]["name"].value;
   if (form == null || form.length == 0) {
-    form = document.forms["botForm"]["key"].value;
+    form = document.forms["modifyBotForm"]["key"].value;
     if (form == null || form.length == 0) {
       return;
     }
   }
   XHR.addEventListener("load", (event) => {
     var jsonData = JSON.parse(event.target.responseText);
-    document.forms["botForm"]["name"].value = jsonData.name;
-    document.forms["botForm"]["key"].value = jsonData.key;
-    document.forms["botForm"]["token"].value = jsonData.token;
-    document.forms["botForm"]["clientSecret"].value = jsonData.clientSecret;
-    document.forms["botForm"]["clientId"].value = jsonData.clientId;
-    document.forms["botForm"]["botType"].value = jsonData.botType;
+    document.forms["modifyBotForm"]["name"].value = jsonData.name;
+    document.forms["modifyBotForm"]["key"].value = jsonData.key;
+    document.forms["modifyBotForm"]["token"].value = jsonData.token;
+    document.forms["modifyBotForm"]["clientSecret"].value =
+      jsonData.clientSecret;
+    document.forms["modifyBotForm"]["clientId"].value = jsonData.clientId;
+    document.forms["modifyBotForm"]["botType"].value = jsonData.botType;
   });
   XHR.addEventListener("error", (event) => {
     var jsonData = JSON.parse(event.target.responseText);
@@ -125,22 +131,31 @@ async function getBot() {
 
 async function getBots() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["botForm"];
-  const FD = new FormData(form);
   XHR.addEventListener("load", (event) => {
-    var display = "";
     var bots = JSON.parse(event.target.responseText);
     bots.forEach(AddBotInfo);
-    function AddBotInfo(bot) {
-      display += bot.name + " : " + bot.key + "\n";
-    }
-    if (display == "") {
-      alert("No bots found");
-    } else {
-      navigator.clipboard.writeText(display);
-      alert(
-        "Open a text editor and paste the text to view a full list of your bots."
-      );
+    function AddBotInfo(bot, index) {
+      var table = document.getElementById("allBots");
+      var row = table.insertRow(index);
+
+      var name = row.insertCell(0);
+      name.innerHTML = bot.name;
+      var token = row.insertCell(1);
+      token.innerHTML = bot.token;
+      var clientSecret = row.insertCell(2);
+      clientSecret.innerHTML = bot.clientSecret;
+      var clientId = row.insertCell(3);
+      clientId.innerHTML = bot.clientId;
+      var botType = row.insertCell(4);
+      botType.innerHTML = bot.botType;
+      var key = row.insertCell(5);
+      key.innerHTML = bot.key;
+      name.classList.add("w-1/3", "text-left", "py-3", "px-4");
+      token.classList.add("w-1/3", "text-left", "py-3", "px-4");
+      clientSecret.classList.add("w-1/3", "text-left", "py-3", "px-4");
+      clientId.classList.add("w-1/3", "text-left", "py-3", "px-4");
+      botType.classList.add("w-1/3", "text-left", "py-3", "px-4");
+      key.classList.add("w-1/3", "text-left", "py-3", "px-4");
     }
   });
   XHR.addEventListener("error", (event) => {
@@ -152,6 +167,5 @@ async function getBots() {
     "Authorization",
     window.sessionStorage.getItem("Authorization")
   );
-  var json = JSON.stringify(Object.fromEntries(FD));
-  XHR.send(json);
+  XHR.send();
 }

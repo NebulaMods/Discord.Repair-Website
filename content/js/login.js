@@ -6,7 +6,7 @@ window.addEventListener("load", async () => {
   }
 
   // Get the form element
-  const form = document.getElementById("myForm");
+  const form = document.getElementById("loginForm");
 
   // Add 'submit' event handler
   form.addEventListener("submit", async (event) => {

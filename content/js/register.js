@@ -19,28 +19,23 @@ async function sendData(form) {
   FD.append("captchaCode", captchaCode);
   // Define what happens on successful data submission
   XHR.addEventListener("load", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    if (jsonData.success) {
-      window.location.replace("https://discord.repair/login.html");
-    } else {
-      alert(jsonData.details);
-      return;
-    }
+    window.location.replace("https://discord.repair/login.html");
   });
 
   // Define what happens in case of error
   XHR.addEventListener("error", (event) => {
     var jsonData = JSON.parse(event.target.responseText);
-    if (jsonData != null || !jsonData.success) {
-      alert(jsonData.details);
-      return;
-    }
-    alert("An error occured while trying to register, please try again.");
+    alert(jsonData.details);
   });
 
   // Set up our request
   XHR.open("PUT", "https://api.discord.repair/v1/user");
   XHR.setRequestHeader("Content-Type", "application/json");
+  if (FD.get("password") != FD.get("passwordCheck")) {
+    alert("Passwords do not match!");
+    return;
+  }
+  FD.delete("passwordCheck");
   var json = JSON.stringify(Object.fromEntries(FD));
   //console.log(json);
   const jsonRequest = JSON.parse(json);

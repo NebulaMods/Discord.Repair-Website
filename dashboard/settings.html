@@ -1,14 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script defer src="/content/js/dash-utils.js"></script>
+    <title>Account | Dashboard</title>
+
+    <!--#region Meta Data-->
     <meta charset="UTF-8" />
+    <meta property="og:title" content="Account | Dashboard" />
+    <meta
+      property="og:url"
+      content="https://discord.repair/dashboard/settings.html"
+    />
+    <meta property="og:site_name" content="Manage your account settings." />
+    <meta name="og:description" content="Manage your account settings." />
+    <meta
+      name="og:image"
+      content="https://discord.repair./content/images/logo.png"
+    />
+    <meta name="twitter:card" content="summary_small_image" />
+    <meta
+      property="twitter:url"
+      content="https://discord.repair/dashboard/settings.html"
+    />
+    <meta
+      name="twitter:image"
+      content="https://discord.repair/content/images/logo.png"
+    />
+    <meta name="twitter:description" content="Manage your account settings." />
+    <meta name="description" content="Manage your account settings." />
+    <meta name="theme-color" content="#3d68ff" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="window-target" content="_top" />
+    <meta
+      name="keywords"
+      content="login,register,nebulamods,nebula,dashboard,account,discord,repair,restore,server,guild,bot,verify,backup,channels,emotes,emojis,stickers,settings,roles,migrate,free,paid,custom,custom-bot,discord.repair"
+    />
+    <meta name="author" content="Nebula" />
+    <meta property="og:type" content="website" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Servers | Dashboard</title>
-    <meta name="author" content="David Grzyb" />
-    <meta name="description" content="" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://discord.repair/content/images/logo.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://discord.repair/content/images/logo.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://discord.repair/content/images/logo.png"
+    />
+    <link
+      rel="manifest"
+      href="https://discord.repair/content/images/logo.png"
+    />
+    <link
+      rel="mask-icon"
+      href="https://discord.repair/content/images/logo.png"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#00aba9" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://discord.repair/content/images/logo.png"
+    />
+    <script defer src="/content/js/account.js"></script>
+
+    <!--#endregion-->
 
     <!-- Tailwind -->
-    <script defer src="/content/js/dash-utils.js"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
       rel="stylesheet"
@@ -83,8 +149,15 @@
           Users
         </a>
         <a
+          href="help.html"
+          class="flex items-center text-white py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-align-left mr-3"></i>
+          Help
+        </a>
+        <a
           href="settings.html"
-          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+          class="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
         >
           <i class="fas fa-align-left mr-3"></i>
           Account Settings
@@ -185,8 +258,15 @@
             Users
           </a>
           <a
-            href="settings.html"
+            href="help.html"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+          >
+            <i class="fas fa-align-left mr-3"></i>
+            Help
+          </a>
+          <a
+            href="settings.html"
+            class="flex items-center active-nav-link text-white py-2 pl-4 nav-item"
           >
             <i class="fas fa-tablet-alt mr-3"></i>
             Account Settings
@@ -212,147 +292,197 @@
 
       <div class="w-full overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6">
-          <h1 class="text-3xl text-black pb-6">Servers</h1>
-
+          <h1 class="text-3xl text-black pb-6">Account Settings</h1>
           <div class="flex flex-wrap">
             <div class="w-full lg:w-1/2 my-6 pr-0 lg:pr-2">
               <p class="text-xl pb-6 flex items-center">
-                <i class="fas fa-list mr-3"></i> Create/Modify Server
+                <i class="fas fa-list mr-3"></i> Account Information
               </p>
               <div class="leading-loose">
-                <form class="p-10 bg-white rounded shadow-xl">
-                  <p class="text-lg text-gray-800 font-medium pb-4">
-                    Server information
-                  </p>
+                <form
+                  id="accountSettingsForm"
+                  class="p-10 bg-white rounded shadow-xl"
+                >
                   <div class="mt-2">
                     <label class="block text-sm text-gray-600" for="cus_name"
-                      >Name</label
+                      >Username</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
                       id="cus_name"
-                      name="cus_name"
+                      name="username"
                       type="text"
-                      required=""
-                      placeholder="Your Name"
-                      aria-label="Name"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label class="block text-sm text-gray-600" for="cus_email"
-                      >Guild ID</label
-                    >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
-                      name="cus_email"
-                      type="text"
-                      required=""
-                      placeholder="Your Guild ID"
-                      aria-label="Email"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label class="block text-sm text-gray-600" for="cus_email"
-                      >Role ID</label
-                    >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
-                      name="cus_email"
-                      type="text"
-                      required=""
-                      placeholder="Your Verify Role ID"
-                      aria-label="Email"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label class="block text-sm text-gray-600" for="cus_email"
-                      >VPN Check</label
-                    >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
-                      name="cus_email"
-                      type="text"
-                      required=""
-                      placeholder="VPN Check Bool"
-                      aria-label="Email"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label class="block text-sm text-gray-600" for="cus_email"
-                      >Custom bot</label
-                    >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
-                      name="cus_email"
-                      type="text"
-                      required=""
-                      placeholder="Custom Bot Name or Key/ID"
-                      aria-label="Email"
+                      placeholder="Username"
+                      aria-label="Username"
                     />
                   </div>
                   <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="cus_name"
-                      >Webhook URL</label
+                    <label class="block text-sm text-gray-600" for="cus_email"
+                      >Email Address</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_name"
-                      name="cus_name"
+                      id="cus_email"
+                      name="email"
+                      type="email"
+                      placeholder="Email Address"
+                      aria-label="Email Address"
+                    />
+                  </div>
+                  <div class="inline-block mt-2 w-1/2 pr-1">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_accountType"
+                      >Account Type</label
+                    >
+                    <input
+                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      id="cus_accountType"
+                      name="accountType"
                       type="text"
-                      required=""
-                      placeholder="Webhook URL For Logging"
-                      aria-label="Name"
+                      disabled=""
+                      placeholder="Account Type"
+                      aria-label="Account Type"
+                    />
+                  </div>
+                  <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_discordId"
+                      >Discord ID</label
+                    >
+                    <input
+                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      id="cus_discordId"
+                      name="discordId"
+                      type="number"
+                      placeholder="Discord ID"
+                      aria-label="Discord ID"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_membershipExpiry"
+                      >Membership Expiry</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_membershipExpiry"
+                      name="membershipExpiry"
+                      type="text"
+                      disabled=""
+                      placeholder="NEVER"
+                      aria-label="NEVER"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_apiToken"
+                      >Account Token</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_apiToken"
+                      name="apiToken"
+                      type="password"
+                      disabled=""
+                      placeholder="API Token"
+                      aria-label="API Token"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label class="block text-sm text-gray-600" for="cus_pfp"
+                      >Profile Picture</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_pfp"
+                      name="pfp"
+                      type="url"
+                      placeholder="Profile Picture"
+                      aria-label="Profile Picture"
                     />
                   </div>
                   <div class="mt-6">
-                    <button
-                      class="px-14 py-1 text-white font-light tracking-wider bg-gray-900 rounded"
-                      type="submit"
-                    >
-                      Create Server
-                    </button>
-                    <button
-                      class="px-14 py-1 text-white font-light tracking-wider bg-gray-900 rounded"
-                      type="submit"
-                    >
-                      Modify Server
-                    </button>
+                    <center>
+                      <button
+                        onclick="javascript:updateUser();"
+                        class="px-8 py-1 m-1 text-white font-light tracking-wider bg-gray-900 rounded"
+                        type="button"
+                      >
+                        Apply Changes
+                      </button>
+                    </center>
                   </div>
                 </form>
               </div>
             </div>
-
-            <div class="w-full lg:w-1/2 mt-6 pl-0 lg:pl-2">
+            <div class="w-full lg:w-1/2 my-6 pl-0 lg:pr-2">
               <p class="text-xl pb-6 flex items-center">
-                <i class="fas fa-list mr-3"></i> Delete Server
+                <i class="fas fa-list mr-3"></i> Change Password
               </p>
               <div class="leading-loose">
-                <form class="p-10 bg-white rounded shadow-xl">
-                  <div class="">
-                    <label class="block text-sm text-gray-600" for="name"
-                      >Name</label
+                <form
+                  id="passwordSettingsForm"
+                  class="p-10 bg-white rounded shadow-xl"
+                >
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_oldPassword"
+                      >Old Password</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="name"
-                      name="name"
-                      type="text"
-                      required=""
-                      placeholder="Your Server Name/Key/ID"
-                      aria-label="Name"
+                      id="cus_oldPassword"
+                      name="oldPassword"
+                      type="password"
+                      placeholder="Old Password"
+                      aria-label="Old Password"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_newPassword"
+                      >New Password</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_newPassword"
+                      name="newPassword"
+                      type="password"
+                      placeholder="New Password"
+                      aria-label="New Password"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_newPasswordCheck"
+                      >New Password Again</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_newPasswordCheck"
+                      name="newPasswordCheck"
+                      type="password"
+                      placeholder="Password Again"
+                      aria-label="Password Again"
                     />
                   </div>
                   <div class="mt-6">
-                    <button
-                      class="px-48 py-1 text-white font-light tracking-wider bg-gray-900 rounded"
-                      type="submit"
-                    >
-                      Delete
-                    </button>
+                    <center>
+                      <button
+                        onclick="javascript:changeUserPassword();"
+                        class="px-8 py-1 m-1 text-white font-light tracking-wider bg-gray-900 rounded"
+                        type="button"
+                      >
+                        Update Password
+                      </button>
+                    </center>
                   </div>
                 </form>
               </div>

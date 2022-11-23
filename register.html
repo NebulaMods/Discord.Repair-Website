@@ -1,65 +1,214 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <script defer src="https://www.google.com/recaptcha/api.js"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-    <script defer src="/content/js/send-register.js" async></script>
     <title>Register</title>
+
+    <!--#region Meta Data-->
+    <meta charset="UTF-8" />
+    <meta property="og:title" content="Register" />
+    <meta property="og:url" content="https://discord.repair/register.html" />
+    <meta
+      property="og:site_name"
+      content="Create an account and start using the backup service you wish you found before it was too late."
+    />
+    <meta
+      name="og:description"
+      content="Create an account and start using the backup service you wish you found before it was too late."
+    />
+    <meta
+      name="og:image"
+      content="https://discord.repair./content/images/logo.png"
+    />
+    <meta name="twitter:card" content="summary_small_image" />
+    <meta
+      property="twitter:url"
+      content="https://discord.repair/register.html"
+    />
+    <meta
+      name="twitter:image"
+      content="https://discord.repair/content/images/logo.png"
+    />
+    <meta
+      name="twitter:description"
+      content="Create an account and start using the backup service you wish you found before it was too late."
+    />
+    <meta
+      name="description"
+      content="Create an account and start using the backup service you wish you found before it was too late."
+    />
+    <meta name="theme-color" content="#3d68ff" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="window-target" content="_top" />
+    <meta
+      name="keywords"
+      content="login,register,nebulamods,nebula,dashboard,account,discord,repair,restore,server,guild,bot,verify,backup,channels,emotes,emojis,stickers,settings,roles,migrate,free,paid,custom,custom-bot,discord.repair"
+    />
+    <meta name="author" content="Nebula" />
+    <meta property="og:type" content="website" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://discord.repair/content/images/logo.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://discord.repair/content/images/logo.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://discord.repair/content/images/logo.png"
+    />
+    <link
+      rel="manifest"
+      href="https://discord.repair/content/images/logo.png"
+    />
+    <link
+      rel="mask-icon"
+      href="https://discord.repair/content/images/logo.png"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#00aba9" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://discord.repair/content/images/logo.png"
+    />
+
+    <script defer src="/content/js/register.js"></script>
+
+    <!--#endregion-->
+    <script defer src="https://www.google.com/recaptcha/api.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
+      @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
+
+      .font-family-poppins {
+        font-family: karla;
+      }
+
+      .textbox-bg {
+        background: #e5e7eb;
+        color: #cbcfd6;
+      }
+
+      .form-width {
+        width: 30rem;
+      }
+
+      .input-width {
+        width: 375px;
+      }
+
+      .login-btn {
+        background: #111827;
+      }
+
+      .icon-colour {
+        color: #111827;
+      }
+      .btn-text {
+        color: #9ca3af;
+      }
+    </style>
   </head>
+
   <body>
-    <div class="container mx-auto p-4 bg-white">
-      <div class="w-full md:w-1/2 lg:w-1/3 mx-auto my-12">
-        <h1 class="text-lg font-bold">Register</h1>
-        <form class="flex flex-col mt-4" action="?" method="POST" id="myForm">
-          <input
-            type="text"
-            name="username"
-            class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
-            placeholder="Username"
-          />
-          <input
-            type="email"
-            name="email"
-            class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
-            placeholder="Email address"
-          />
-          <input
-            type="password"
-            name="password"
-            class="px-4 py-3 mt-4 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
-            placeholder="Password"
-          />
+    <main
+      class="font-family-poppins flex items-center justify-center h-screen bg-main"
+    >
+      <form id="registerForm">
+        <div class="bg-white text-black form-width p-6 rounded shadow-xl">
+          <div class="flex items-center justify-center p-6">
+            <img
+              src="https://nebulamods.ca/content/images/logo-nebulamods.png"
+              class="h-32"
+            />
+          </div>
+
+          <div class="textbox-bg p-2 rounded m-2">
+            <span class="input-icon-addon">
+              <i class="icon-colour fa-solid fa-user"></i>
+            </span>
+            <input
+              class="input-width py-1 pl-1 text-gray-700 bg-gray-200 rounded"
+              id="cus_username"
+              name="username"
+              type="text"
+              required=""
+              placeholder="Username"
+              aria-label="Username"
+            />
+          </div>
+          <div class="textbox-bg p-2 rounded m-2">
+            <span class="input-icon-addon">
+              <i class="icon-colour fa-solid fa-envelope"></i>
+            </span>
+            <input
+              class="input-width py-1 pl-1 text-gray-700 bg-gray-200 rounded"
+              id="cus_email"
+              name="email"
+              type="email"
+              required=""
+              placeholder="Email"
+              aria-label="Email"
+            />
+          </div>
+          <div class="textbox-bg p-2 rounded m-2">
+            <span class="input-icon-addon">
+              <i class="icon-colour fa fa-key"></i>
+            </span>
+            <input
+              class="input-width py-1 pl-1 text-gray-700 bg-gray-200 rounded"
+              id="cus_password"
+              name="password"
+              type="password"
+              required=""
+              placeholder="Password"
+              aria-label="Password"
+            />
+          </div>
+          <div class="textbox-bg p-2 rounded m-2">
+            <span class="input-icon-addon">
+              <i class="icon-colour fa fa-key"></i>
+            </span>
+            <input
+              class="input-width py-1 pl-1 text-gray-700 bg-gray-200 rounded"
+              id="cus_passwordCheck"
+              name="passwordCheck"
+              type="password"
+              required=""
+              placeholder="Password Again"
+              aria-label="Password Again"
+            />
+          </div>
           <br />
-          <div
-            class="g-recaptcha"
-            data-sitekey="6LclXFYhAAAAAKtivAx3g5EL4kWVF7AOZd6reaXF"
-            style="align-items: center"
-          >
-            Submit
+          <center>
+            <div
+              class="g-recaptcha"
+              data-sitekey="6LclXFYhAAAAAKtivAx3g5EL4kWVF7AOZd6reaXF"
+              style="align-items: center"
+            ></div>
+          </center>
+          <div class="p-6">
+            <button
+              type="submit"
+              class="p-2 rounded btn-text focus:outline-none login-btn hover:text-white focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer inline-flex items-center w-full justify-center items-center font-medium focus:outline-none"
+            >
+              Register
+            </button>
           </div>
-          <button
-            type="submit"
-            class="mt-4 px-4 py-3 leading-6 text-base rounded-md border border-transparent text-white focus:outline-none bg-blue-500 text-blue-100 hover:text-white focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer inline-flex items-center w-full justify-center items-center font-medium focus:outline-none"
-          >
-            Register
-          </button>
-          <div class="flex flex-col items-center mt-5">
-            <p class="mt-1 text-xs font-light text-gray-500">
-              <a
-                class="ml-1 font-medium text-blue-400"
-                href="https://api.discord.repair/"
-                target="_blank"
-                >Access API now!</a
-              >
-              Register already?<a
-                class="ml-1 font-medium text-blue-400"
-                href="https://discord.repair/login.html"
-                >Sign in now!</a
-              >
-            </p>
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
+      </form>
+    </main>
   </body>
 </html>
