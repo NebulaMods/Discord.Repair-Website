@@ -303,14 +303,15 @@
                   id="createServerForm"
                   class="p-10 bg-white rounded shadow-xl"
                 >
-                  <p>* Required</p>
                   <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="cus_name"
-                      >*Name</label
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_createName"
+                      >Name</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_name"
+                      id="cus_createName"
                       name="name"
                       type="text"
                       required=""
@@ -319,12 +320,14 @@
                     />
                   </div>
                   <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label class="block text-sm text-gray-600" for="cus_email"
-                      >*Guild ID</label
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_createGuildId"
+                      >Guild ID</label
                     >
                     <input
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
+                      id="cus_createGuildId"
                       name="guildId"
                       type="number"
                       required=""
@@ -333,12 +336,14 @@
                     />
                   </div>
                   <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label class="block text-sm text-gray-600" for="cus_email"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_createRoleId"
                       >Role ID</label
                     >
                     <input
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
+                      id="cus_createRoleId"
                       name="roleId"
                       type="number"
                       placeholder="Your Verify Role ID"
@@ -346,12 +351,14 @@
                     />
                   </div>
                   <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label class="block text-sm text-gray-600" for="cus_email"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_createVpnCheck"
                       >VPN Check</label
                     >
                     <input
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
+                      id="cus_createVpnCheck"
                       name="vpnCheck"
                       type="text"
                       placeholder="True"
@@ -359,26 +366,30 @@
                     />
                   </div>
                   <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label class="block text-sm text-gray-600" for="cus_email"
-                      >*Custom bot</label
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_createBot"
+                      >Bot</label
                     >
                     <input
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
+                      id="cus_createBot"
                       name="mainbot"
                       type="text"
                       required=""
-                      placeholder="Custom Bot Name or Key/ID"
-                      aria-label="Custom Bot Name/Key/ID"
+                      placeholder="Bot Name or Key"
+                      aria-label="Bot Name/Key"
                     />
                   </div>
                   <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="cus_name"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_createWebhook"
                       >Webhook URL</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_name"
+                      id="cus_createWebhook"
                       name="webhook"
                       type="text"
                       placeholder="Webhook URL For Logging"
@@ -410,39 +421,46 @@
                 >
                   <p>Click "Get" before modifying an exisiting server.</p>
                   <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="cus_name"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyName"
                       >Name</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_name"
+                      id="cus_modifyName"
                       name="name"
                       type="text"
+                      required=""
                       placeholder="Server Name"
                       aria-label="Name"
                     />
                   </div>
                   <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="cus_name"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyKey"
                       >Key</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_name"
+                      id="cus_modifyKey"
                       name="key"
                       type="text"
-                      required=""
-                      placeholder="Server Key/ID"
+                      disabled=""
+                      placeholder="Server Key"
                       aria-label="Key"
                     />
                   </div>
                   <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label class="block text-sm text-gray-600" for="cus_email"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyGuildId"
                       >Guild ID</label
                     >
                     <input
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
+                      id="cus_modifyGuildId"
                       name="guildId"
                       type="number"
                       placeholder="Your Guild ID"
@@ -450,12 +468,14 @@
                     />
                   </div>
                   <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label class="block text-sm text-gray-600" for="cus_email"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyRoleId"
                       >Role ID</label
                     >
                     <input
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
+                      id="cus_modifyRoleId"
                       name="roleId"
                       type="number"
                       placeholder="Your Verify Role ID"
@@ -463,12 +483,14 @@
                     />
                   </div>
                   <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label class="block text-sm text-gray-600" for="cus_email"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyVpnCheck"
                       >VPN Check</label
                     >
                     <input
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
+                      id="cus_modifyVpnCheck"
                       name="vpnCheck"
                       type="text"
                       placeholder="VPN Check Bool"
@@ -476,25 +498,29 @@
                     />
                   </div>
                   <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label class="block text-sm text-gray-600" for="cus_email"
-                      >Custom bot</label
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyBot"
+                      >Bot</label
                     >
                     <input
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
+                      id="cus_modifyBot"
                       name="mainbot"
                       type="text"
-                      placeholder="Custom Bot Name or Key/ID"
-                      aria-label="Custom Bot Name/Key/ID"
+                      placeholder="Bot Name or Key"
+                      aria-label="Bot Name/Key"
                     />
                   </div>
                   <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="cus_name"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyWebhook"
                       >Webhook URL</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_name"
+                      id="cus_modifyWebhook"
                       name="webhook"
                       type="text"
                       placeholder="Webhook URL For Logging"
@@ -531,27 +557,31 @@
                   id="verifyMessageForm"
                   class="p-10 bg-white rounded shadow-xl"
                 >
-                  <p>Create a custom verify message. *Text not needed*</p>
+                  <p>Create a custom verify message.</p>
                   <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="cus_name"
-                      >Text</label
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_verifyTitle"
+                      >Title</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_name"
-                      name="text"
+                      id="cus_verifyTitle"
+                      name="title"
                       type="text"
-                      placeholder="Text message"
-                      aria-label="Text"
+                      placeholder="Verification"
+                      aria-label="Title"
                     />
                   </div>
                   <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label class="block text-sm text-gray-600" for="cus_email"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_verifyServer"
                       >Server Name</label
                     >
                     <input
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
+                      id="cus_verifyServer"
                       name="server"
                       type="text"
                       placeholder="Server Name/Key"
@@ -559,12 +589,14 @@
                     />
                   </div>
                   <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label class="block text-sm text-gray-600" for="cus_email"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_verifyChannelId"
                       >Channel ID</label
                     >
                     <input
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
+                      id="cus_verifyChannelId"
                       name="channelId"
                       type="number"
                       placeholder="Channel ID"
@@ -572,12 +604,14 @@
                     />
                   </div>
                   <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label class="block text-sm text-gray-600" for="cus_email"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_verifyEmbedColour"
                       >Embed Colour</label
                     >
                     <input
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_email"
+                      id="cus_verifyEmbedColour"
                       name="embedColour"
                       type="text"
                       placeholder="RANDOM"
@@ -585,12 +619,14 @@
                     />
                   </div>
                   <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="cus_name"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_verifyEmbedDescription"
                       >Embed Description</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_name"
+                      id="cus_verifyEmbedDescription"
                       name="embedDescription"
                       type="text"
                       placeholder="Please click verify in order to recieve access to the server."
@@ -598,16 +634,48 @@
                     />
                   </div>
                   <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="cus_name"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_verifyFooterText"
+                      >Footer Text</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_verifyFooterText"
+                      name="footerText"
+                      type="text"
+                      placeholder="Discord.Repair"
+                      aria-label="Token"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_imageUrl"
                       >Image URL</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_name"
+                      id="cus_imageUrl"
                       name="imageUrl"
                       type="text"
                       placeholder="https://nebulamods.ca/content/images/logo-nebulamods.png"
                       aria-label="Image URL"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_verifyFooterIcon"
+                      >Footer Icon URL</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_verifyFooterIcon"
+                      name="footerIconUrl"
+                      type="text"
+                      placeholder="https://nebulamods.ca/content/images/logo-nebulamods.png"
+                      aria-label="Footer Icon URL"
                     />
                   </div>
                   <div class="mt-6">
@@ -631,16 +699,18 @@
               <div class="leading-loose">
                 <form class="p-10 bg-white rounded shadow-xl">
                   <div class="">
-                    <label class="block text-sm text-gray-600" for="name"
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_deleteServer"
                       >Name</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="name"
+                      id="cus_deleteServer"
                       name="name"
                       type="text"
                       required=""
-                      placeholder="Your Server Name/Key/ID"
+                      placeholder="Your Server Name/Key"
                       aria-label="Name"
                     />
                   </div>
@@ -685,7 +755,7 @@
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
-                      Custom Bot
+                      Bot
                     </th>
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
@@ -700,7 +770,7 @@
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
-                      Key/ID
+                      Key
                     </th>
                   </tr>
                 </thead>

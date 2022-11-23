@@ -292,7 +292,55 @@
 
       <div class="w-full overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6">
-          <p style="text-align: center">Coming Soon!</p>
+          <div class="w-full mt-12">
+            <p class="text-xl pb-3 flex items-center">
+              <i class="fas fa-list mr-3"></i> All Users
+            </p>
+            <div class="bg-white overflow-auto">
+              <table class="min-w-full bg-white">
+                <thead class="bg-gray-800 text-white">
+                  <tr>
+                    <th
+                      class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Username
+                    </th>
+                    <th
+                      class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Discord ID
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Server Name
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Bot
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Access Token
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Refresh Token
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      IP Address
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-700" id="allServers"></tbody>
+              </table>
+            </div>
+          </div>
         </main>
       </div>
     </div>
