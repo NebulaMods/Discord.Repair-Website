@@ -45,40 +45,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://discord.repair/content/images/logo.png"
+      sizes="128x128"
+      href="/content/images/logo-128.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo-32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo-16.png"
     />
-    <link
-      rel="manifest"
-      href="https://discord.repair/content/images/logo.png"
-    />
-    <link
-      rel="mask-icon"
-      href="https://discord.repair/content/images/logo.png"
-      color="#5bbad5"
-    />
-    <meta name="msapplication-TileColor" content="#00aba9" />
+    <link rel="mask-icon" href="/content/images/logo.png" color="#3d68ff" />
+    <meta name="msapplication-TileColor" content="#3d68ff" />
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo.ico"
     />
     <script defer src="/content/js/login.js"></script>
 
     <!--#endregion-->
-    <title>Login</title>
 
     <script defer src="https://www.google.com/recaptcha/api.js"></script>
     <link
@@ -89,6 +80,10 @@
     <style>
       @import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
       @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
+
+      .bg-main {
+        background-color: #3d68ff;
+      }
 
       .font-family-poppins {
         font-family: karla;
@@ -127,10 +122,7 @@
       <form id="loginForm">
         <div class="bg-white text-black form-width p-6 rounded shadow-xl">
           <div class="flex items-center justify-center p-6">
-            <img
-              src="https://nebulamods.ca/content/images/logo-nebulamods.png"
-              class="h-32"
-            />
+            <img src="/content/images/logo.png" class="h-32" />
           </div>
 
           <div class="textbox-bg p-2 rounded m-2">
@@ -178,6 +170,9 @@
               Login
             </button>
           </div>
+          <p style="text-align: center">
+            Don't have an account? <a href="/register.html">Register now!</a>
+          </p>
         </div>
       </form>
     </main>

@@ -40,35 +40,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://discord.repair/content/images/logo.png"
+      sizes="128x128"
+      href="/content/images/logo-128.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo-32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo-16.png"
     />
-    <link
-      rel="manifest"
-      href="https://discord.repair/content/images/logo.png"
-    />
-    <link
-      rel="mask-icon"
-      href="https://discord.repair/content/images/logo.png"
-      color="#5bbad5"
-    />
+    <link rel="mask-icon" href="/content/images/logo.png" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#00aba9" />
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo.ico"
     />
     <script defer src="/content/js/server.js"></script>
 
@@ -161,6 +153,15 @@
         >
           <i class="fas fa-align-left mr-3"></i>
           Account Settings
+        </a>
+        <a
+          id="adminPage"
+          style="display: none"
+          href="admin.html"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-align-left mr-3"></i>
+          Admin
         </a>
       </nav>
       <a
@@ -272,6 +273,15 @@
             Account Settings
           </a>
           <a
+            id="adminPage-mobile"
+            style="display: none"
+            href="admin.html"
+            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+          >
+            <i class="fas fa-tablet-alt mr-3"></i>
+            Admin
+          </a>
+          <a
             href="javascript:signOut();"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
@@ -329,7 +339,7 @@
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                       id="cus_createGuildId"
                       name="guildId"
-                      type="number"
+                      type="text"
                       required=""
                       placeholder="Your Guild ID"
                       aria-label="Guild"
@@ -345,7 +355,7 @@
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                       id="cus_createRoleId"
                       name="roleId"
-                      type="number"
+                      type="text"
                       placeholder="Your Verify Role ID"
                       aria-label="Role"
                     />
@@ -368,6 +378,21 @@
                   <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
                     <label
                       class="block text-sm text-gray-600"
+                      for="cus_createCaptchaCheck"
+                      >Captcha Check</label
+                    >
+                    <input
+                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      id="cus_createCaptchaCheck"
+                      name="captchaCheck"
+                      type="text"
+                      placeholder="True"
+                      aria-label="Captcha"
+                    />
+                  </div>
+                  <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                    <label
+                      class="block text-sm text-gray-600"
                       for="cus_createBot"
                       >Bot</label
                     >
@@ -379,6 +404,21 @@
                       required=""
                       placeholder="Bot Name or Key"
                       aria-label="Bot Name/Key"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_createVerifyBGImage"
+                      >Verify Background Image</label
+                    >
+                    <input
+                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      id="cus_createVerifyBGImage"
+                      name="verifyBGImage"
+                      type="text"
+                      placeholder="Verify Background Image URL"
+                      aria-label="Verify Background Image URL"
                     />
                   </div>
                   <div class="mt-2">
@@ -452,6 +492,22 @@
                       aria-label="Key"
                     />
                   </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyVanityURL"
+                      >Vanity URL</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyVanityURL"
+                      name="vanityURL"
+                      type="url"
+                      disabled=""
+                      placeholder="Vanity URL"
+                      aria-label="Vanity URL"
+                    />
+                  </div>
                   <div class="inline-block mt-2 w-1/2 pr-1">
                     <label
                       class="block text-sm text-gray-600"
@@ -462,7 +518,7 @@
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                       id="cus_modifyGuildId"
                       name="guildId"
-                      type="number"
+                      type="text"
                       placeholder="Your Guild ID"
                       aria-label="Guild"
                     />
@@ -477,7 +533,7 @@
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                       id="cus_modifyRoleId"
                       name="roleId"
-                      type="number"
+                      type="text"
                       placeholder="Your Verify Role ID"
                       aria-label="Role"
                     />
@@ -493,8 +549,23 @@
                       id="cus_modifyVpnCheck"
                       name="vpnCheck"
                       type="text"
-                      placeholder="VPN Check Bool"
+                      placeholder="VPN Check"
                       aria-label="VPN"
+                    />
+                  </div>
+                  <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyCaptchaCheck"
+                      >Captcha Check</label
+                    >
+                    <input
+                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyCaptchaCheck"
+                      name="captchaCheck"
+                      type="text"
+                      placeholder="Captcha Check"
+                      aria-label="Captcha"
                     />
                   </div>
                   <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
@@ -522,9 +593,24 @@
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
                       id="cus_modifyWebhook"
                       name="webhook"
-                      type="text"
+                      type="url"
                       placeholder="Webhook URL For Logging"
                       aria-label="Webhook"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyVerifyBGImage"
+                      >Verify Background Image</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyVerifyBGImage"
+                      name="verifyBGImage"
+                      type="url"
+                      placeholder="Verify Background Image"
+                      aria-label="Verify Background Image"
                     />
                   </div>
                   <div class="mt-6">
@@ -598,7 +684,7 @@
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                       id="cus_verifyChannelId"
                       name="channelId"
-                      type="number"
+                      type="text"
                       placeholder="Channel ID"
                       aria-label="Channel ID"
                     />
@@ -624,14 +710,14 @@
                       for="cus_verifyEmbedDescription"
                       >Embed Description</label
                     >
-                    <input
+                    <textarea
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
                       id="cus_verifyEmbedDescription"
                       name="embedDescription"
                       type="text"
                       placeholder="Please click verify in order to recieve access to the server."
                       aria-label="Token"
-                    />
+                    ></textarea>
                   </div>
                   <div class="mt-2">
                     <label
@@ -697,7 +783,10 @@
                 <i class="fas fa-list mr-3"></i> Delete Server
               </p>
               <div class="leading-loose">
-                <form class="p-10 bg-white rounded shadow-xl">
+                <form
+                  id="deleteServerForm"
+                  class="p-10 bg-white rounded shadow-xl"
+                >
                   <div class="">
                     <label
                       class="block text-sm text-gray-600"
@@ -743,7 +832,7 @@
                       Name
                     </th>
                     <th
-                      class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm"
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
                       Guild ID
                     </th>
@@ -765,12 +854,12 @@
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
-                      Webhook URL
+                      Captcha Check
                     </th>
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
-                      Key
+                      Vanity URL
                     </th>
                   </tr>
                 </thead>

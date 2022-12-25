@@ -52,35 +52,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://discord.repair/content/images/logo.png"
+      sizes="128x128"
+      href="/content/images/logo-128.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo-32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo-16.png"
     />
-    <link
-      rel="manifest"
-      href="https://discord.repair/content/images/logo.png"
-    />
-    <link
-      rel="mask-icon"
-      href="https://discord.repair/content/images/logo.png"
-      color="#5bbad5"
-    />
+    <link rel="mask-icon" href="/content/images/logo.png" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#00aba9" />
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo.ico"
     />
 
     <!--#endregion-->
@@ -172,6 +164,15 @@
         >
           <i class="fas fa-align-left mr-3"></i>
           Account Settings
+        </a>
+        <a
+          id="adminPage"
+          style="display: none"
+          href="admin.html"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-align-left mr-3"></i>
+          Admin
         </a>
       </nav>
       <a
@@ -283,6 +284,15 @@
             Account Settings
           </a>
           <a
+            id="adminPage-mobile"
+            style="display: none"
+            href="admin.html"
+            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+          >
+            <i class="fas fa-tablet-alt mr-3"></i>
+            Admin
+          </a>
+          <a
             href="javascript:signOut();"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
@@ -344,45 +354,45 @@
               </div>
               <div class="bg-white p-6">
                 <div id="" class="" x-show="openTab === 1">
-                  Check out how to setup a bot.
+                  First create a bot on the Discord developer portal. Then
+                  follow the steps how to create bot, then create a server &amp;
+                  send a verify a message for users.
                 </div>
                 <div id="" class="" x-show="openTab === 2">
-                  Find Bot Information Finding some required information about
-                  your bot might be hard, but we will guide you through it. #Bot
-                  Token After creating a Bot, click on "Reset Token" to reveal
-                  its secret Tokens.
+                  Discord Repair Bot Setup Once you have created your discord
+                  application press the OAuth2 button, copy the applications
+                  client secret, and paste it in the client secret textbox under
+                  create bot at https://discord.repair/dashboard/bots.html.
+                  After you have done the client secret go back to the OAuth2
+                  page for your discord application and copy the applications
+                  client id, and paste it in the client id textbox under create
+                  bot at https://discord.repair/dashboard/bots.html. Now that
+                  you have got your client id done go back to the OAuth2 page in
+                  your discord application and add a redirect that points to
+                  "https://discord.repair/verify". Now that the OAuth2 stuff is
+                  out of the way go to the bot section in your discord
+                  application, add a bot if you have not already, and copy the
+                  discord bot token and paste it into the textbox named token
+                  under create bot at
+                  https://discord.repair/dashboard/bots.html. Finally, give your
+                  bot a name and if you did everything correctly it should look
+                  something like the image down below and you can press the
+                  create button.
                   <img
-                    src="https://docs.restorecord.com/static/botsetup/bot_token.png"
+                    src="https://cdn.nebulamods.ca/cracked-by-nebula-ca/png/UAAF5LZH.png"
                   />
-
-                  #Client ID Click on OAuth2 and copy the Client ID.
                   <img
-                    src="https://docs.restorecord.com/static/botsetup/client_id.png"
+                    src="https://cdn.nebulamods.ca/cracked-by-nebula-ca/png/B98T9K8R.png"
                   />
-
-                  #Client Secret Click on OAuth2, on the right-hand side of the
-                  screen, under CLIENT SECRET, click "Reset Secret".
                   <img
-                    src="https://docs.restorecord.com/static/botsetup/bot_secret.png"
-                  />
-
-                  #Setup Privileged Gateway Intents Setting up Privileged
-                  Gateway Intents might help your bot pull members faster and
-                  for future updates! Scroll down and toggle every Intent
-                  available:
-                  <img
-                    src="https://docs.restorecord.com/static/botsetup/intents.png"
-                  />
-
-                  Setup OAuth2 Redirect Redirect URL:
-                  https://api.discord.repair/v1/discord-user/link <br />After
-                  creating an Application on the Discord Developer Portal, go to
-                  the OAuth2 tab and add a Redirect URL.
-                  <img
-                    src="https://cdn.nebulamods.ca/cracked-by-nebula-ca/png/I87QAVL8.png"
+                    src="https://cdn.nebulamods.ca/cracked-by-nebula-ca/png/Z3FCUVKA.png"
                   />
                 </div>
-                <div id="" class="" x-show="openTab === 3"></div>
+                <div id="" class="" x-show="openTab === 3">
+                  <img
+                    src="https://cdn.nebulamods.ca/cracked-by-nebula-ca/png/WLQI328S.png"
+                  />
+                </div>
                 <div id="" class="" x-show="openTab === 4"></div>
               </div>
             </div>

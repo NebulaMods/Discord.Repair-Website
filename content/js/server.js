@@ -1,22 +1,26 @@
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   getServers();
 });
 
 async function createServer() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["createServerForm"];
+  let form = document.forms["createServerForm"];
   const FD = new FormData(form);
-  XHR.addEventListener("load", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    document.forms["createServerForm"]["name"].value = jsonData.name;
-    document.forms["createServerForm"]["key"].value = jsonData.key;
-    document.forms["createServerForm"]["guildId"].value = jsonData.guildId;
-    document.forms["createServerForm"]["roleId"].value = jsonData.roleId;
-    document.forms["createServerForm"]["mainbot"].value = jsonData.botName;
+  XHR.addEventListener("load", async (event) => {
+    let jsonData = JSON.parse(event.target.responseText);
+    if (jsonData.success == null) {
+      document.forms["createServerForm"].reset();
+      await getServers();
+      alert("successfully created server.");
+      return;
+    }
+    alert(jsonData.details);
   });
   XHR.addEventListener("error", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    document.forms["createServerForm"].reset();
+    alert(
+      "An error occurred, if this continues to occur please contact an admin."
+    );
   });
   XHR.open("PUT", "https://api.discord.repair/v1/server");
   XHR.setRequestHeader("Content-Type", "application/json");
@@ -24,9 +28,14 @@ async function createServer() {
     "Authorization",
     window.sessionStorage.getItem("Authorization")
   );
-  FD.delete("key");
   if (FD.get("vpnCheck") == "") {
     FD.delete("vpnCheck");
+  }
+  if (FD.get("captchaCheck") == "") {
+    FD.delete("captchaCheck");
+  }
+  if (FD.get("verifyBGImage") == "") {
+    FD.delete("verifyBGImage");
   }
   if (FD.get("webhook") == "") {
     FD.delete("webhook");
@@ -34,34 +43,47 @@ async function createServer() {
   if (FD.get("roleId") == "") {
     FD.delete("roleId");
   }
-  var json = JSON.stringify(Object.fromEntries(FD));
+  let json = JSON.stringify(Object.fromEntries(FD));
   XHR.send(json);
 }
 
 async function modifyServer() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["modifyServerForm"];
+  let form = document.forms["modifyServerForm"];
   const FD = new FormData(form);
-  XHR.addEventListener("load", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
+  XHR.addEventListener("load", async (event) => {
+    let jsonData = JSON.parse(event.target.responseText);
+    if (jsonData.success == true) {
+      await getServers();
+    }
+    document.forms["modifyServerForm"].reset();
     alert(jsonData.details);
   });
   XHR.addEventListener("error", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    document.forms["modifyServerForm"].reset();
+    alert(
+      "An error occurred, if this continues to occur please contact an admin."
+    );
   });
-  XHR.open("PATCH", "https://api.discord.repair/v1/server/" + FD.get("key"));
+  XHR.open("PATCH", "https://api.discord.repair/v1/server/" + FD.get("name"));
   XHR.setRequestHeader("Content-Type", "application/json");
   XHR.setRequestHeader(
     "Authorization",
     window.sessionStorage.getItem("Authorization")
   );
   FD.delete("key");
+  FD.delete("vanityURL");
   if (FD.get("vpnCheck") == "") {
     FD.delete("vpnCheck");
   }
+  if (FD.get("captchaCheck") == "") {
+    FD.delete("captchaCheck");
+  }
   if (FD.get("webhook") == "") {
     FD.delete("webhook");
+  }
+  if (FD.get("verifyBGImage") == "") {
+    FD.delete("verifyBGImage");
   }
   if (FD.get("roleId") == "") {
     FD.delete("roleId");
@@ -75,24 +97,27 @@ async function modifyServer() {
   if (FD.get("mainbot") == "") {
     FD.delete("mainbot");
   }
-  var json = JSON.stringify(Object.fromEntries(FD));
+  let json = JSON.stringify(Object.fromEntries(FD));
   XHR.send(json);
 }
 
 async function deleteServer() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["deleteServerForm"]["name"].value;
-  console.log(form);
-  if (form == null || form.length == 0) {
-    return;
-  }
-  XHR.addEventListener("load", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
+  let form = document.forms["deleteServerForm"]["name"].value;
+
+  XHR.addEventListener("load", async (event) => {
+    let jsonData = JSON.parse(event.target.responseText);
+    if (jsonData.success == true) {
+      await getServers();
+    }
+    document.forms["deleteServerForm"].reset();
     alert(jsonData.details);
   });
   XHR.addEventListener("error", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    document.forms["deleteServerForm"].reset();
+    alert(
+      "An error occurred, if this continues to occur please contact an admin."
+    );
   });
   XHR.open("DELETE", "https://api.discord.repair/v1/server/" + form);
   XHR.setRequestHeader(
@@ -104,26 +129,35 @@ async function deleteServer() {
 
 async function getServer() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["modifyServerForm"]["name"].value;
-  if (form == null || form.length == 0) {
-    form = document.forms["modifyServerForm"]["key"].value;
-    if (form == null || form.length == 0) {
+  let form = document.forms["modifyServerForm"]["name"].value;
+  XHR.addEventListener("load", (event) => {
+    let jsonData = JSON.parse(event.target.responseText);
+    if (jsonData.success == null) {
+      document.forms["modifyServerForm"].reset();
+      document.forms["modifyServerForm"]["name"].value = jsonData.name;
+      document.forms["modifyServerForm"]["key"].value = jsonData.key;
+      document.forms["modifyServerForm"]["guildId"].value = jsonData.guildId;
+      document.forms["modifyServerForm"]["webhook"].value = jsonData.webhook;
+      document.forms["modifyServerForm"]["roleId"].value = jsonData.roleId;
+      document.forms["modifyServerForm"]["vpnCheck"].value = jsonData.vpnCheck;
+      document.forms["modifyServerForm"]["mainbot"].value =
+        jsonData.mainBotName;
+      document.forms["modifyServerForm"]["captchaCheck"].value =
+        jsonData.captcha;
+      document.forms["modifyServerForm"]["verifyBGImage"].value =
+        jsonData.backgroundImage;
+      document.forms["modifyServerForm"]["vanityURL"].value =
+        jsonData.vanityUrl;
       return;
     }
-  }
-  XHR.addEventListener("load", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    document.forms["modifyServerForm"]["name"].value = jsonData.name;
-    document.forms["modifyServerForm"]["key"].value = jsonData.key;
-    document.forms["modifyServerForm"]["guildId"].value = jsonData.guildId;
-    document.forms["modifyServerForm"]["webhook"].value = jsonData.webhook;
-    document.forms["modifyServerForm"]["roleId"].value = jsonData.roleId;
-    document.forms["modifyServerForm"]["vpnCheck"].value = jsonData.vpnCheck;
-    document.forms["modifyServerForm"]["mainbot"].value = jsonData.mainBotName;
+    document.forms["modifyServerForm"].reset();
+    alert(jsonData.details);
   });
   XHR.addEventListener("error", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    document.forms["modifyServerForm"].reset();
+    alert(
+      "An error occurred, if this continues to occur please contact an admin."
+    );
   });
   XHR.open("GET", "https://api.discord.repair/v1/server/" + form);
   XHR.setRequestHeader(
@@ -134,40 +168,46 @@ async function getServer() {
 }
 
 async function getServers() {
+  document.getElementById("allServers").innerHTML = "";
   const XHR = new XMLHttpRequest();
   XHR.addEventListener("load", (event) => {
-    var servers = JSON.parse(event.target.responseText);
-    servers.forEach(AddServerInfo);
-    function AddServerInfo(server, index) {
-      var table = document.getElementById("allServers");
-      var row = table.insertRow(index);
+    let servers = JSON.parse(event.target.responseText);
+    if (servers.success == null) {
+      servers.forEach(AddServerInfo);
+      function AddServerInfo(server, index) {
+        let table = document.getElementById("allServers");
+        let row = table.insertRow(index);
 
-      var name = row.insertCell(0);
-      name.innerHTML = server.name;
-      var guildId = row.insertCell(1);
-      guildId.innerHTML = server.guildId;
-      var roleId = row.insertCell(2);
-      roleId.innerHTML = server.roleId;
-      var customBot = row.insertCell(3);
-      customBot.innerHTML = server.mainBotName;
-      var vpnCheck = row.insertCell(4);
-      vpnCheck.innerHTML = server.vpnCheck;
-      var webhook = row.insertCell(5);
-      webhook.innerHTML = server.webhook;
-      var key = row.insertCell(6);
-      key.innerHTML = server.key;
-      name.classList.add("w-1/3", "text-left", "py-3", "px-4");
-      guildId.classList.add("w-1/3", "text-left", "py-3", "px-4");
-      roleId.classList.add("w-1/3", "text-left", "py-3", "px-4");
-      customBot.classList.add("w-1/3", "text-left", "py-3", "px-4");
-      vpnCheck.classList.add("w-1/3", "text-left", "py-3", "px-4");
-      webhook.classList.add("w-1/3", "text-left", "py-3", "px-4");
-      key.classList.add("w-1/3", "text-left", "py-3", "px-4");
+        let name = row.insertCell(0);
+        name.innerHTML = server.name;
+        let guildId = row.insertCell(1);
+        guildId.innerHTML = server.guildId;
+        let roleId = row.insertCell(2);
+        roleId.innerHTML = server.roleId;
+        let customBot = row.insertCell(3);
+        customBot.innerHTML = server.mainBotName;
+        let vpnCheck = row.insertCell(4);
+        vpnCheck.innerHTML = server.vpnCheck;
+        let captchaCheck = row.insertCell(5);
+        captchaCheck.innerHTML = server.captcha;
+        let vanityUrl = row.insertCell(6);
+        vanityUrl.innerHTML = server.vanityUrl;
+        name.classList.add("text-left", "py-3", "px-4");
+        guildId.classList.add("text-left", "py-3", "px-4");
+        roleId.classList.add("text-left", "py-3", "px-4");
+        customBot.classList.add("text-left", "py-3", "px-4");
+        vpnCheck.classList.add("text-left", "py-3", "px-4");
+        captchaCheck.classList.add("text-left", "py-3", "px-4");
+        vanityUrl.classList.add("text-left", "py-3", "px-4");
+      }
+      return;
     }
+    alert.details(servers.details);
   });
   XHR.addEventListener("error", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    alert(
+      "An error occurred while trying to fetch all of your servers, if this continues to occur please contact an admin."
+    );
   });
   XHR.open("GET", "https://api.discord.repair/v1/server");
   XHR.setRequestHeader(
@@ -179,17 +219,19 @@ async function getServers() {
 
 async function sendVerifyMessage() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["verifyMessageForm"];
-  var formData = new FormData(form);
+  let form = document.forms["verifyMessageForm"];
+  let formData = new FormData(form);
 
   XHR.addEventListener("load", (event) => {
-    var json = JSON.parse(event.target.responseText);
+    let json = JSON.parse(event.target.responseText);
     alert(json.details);
   });
 
   XHR.addEventListener("error", (event) => {
-    var json = JSON.parse(event.target.responseText);
-    alert(json.details);
+    document.forms["verifyMessageForm"].reset();
+    alert(
+      "An error occurred, if this continues to occur please contact an admin."
+    );
   });
 
   XHR.open(
@@ -211,6 +253,9 @@ async function sendVerifyMessage() {
       embedColour: formData.get("embedColour"),
       imageUrl: formData.get("imageUrl"),
       embedDescription: formData.get("embedDescription"),
+      title: formData.get("title"),
+      footerText: formData.get("footerText"),
+      footerIconUrl: formData.get("footerIconUrl"),
     },
     isTts: false,
   };

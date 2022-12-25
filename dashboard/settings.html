@@ -40,35 +40,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://discord.repair/content/images/logo.png"
+      sizes="128x128"
+      href="/content/images/logo-128.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo-32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo-16.png"
     />
-    <link
-      rel="manifest"
-      href="https://discord.repair/content/images/logo.png"
-    />
-    <link
-      rel="mask-icon"
-      href="https://discord.repair/content/images/logo.png"
-      color="#5bbad5"
-    />
+    <link rel="mask-icon" href="/content/images/logo.png" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#00aba9" />
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo.ico"
     />
     <script defer src="/content/js/account.js"></script>
 
@@ -150,7 +142,7 @@
         </a>
         <a
           href="help.html"
-          class="flex items-center text-white py-4 pl-6 nav-item"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
           <i class="fas fa-align-left mr-3"></i>
           Help
@@ -161,6 +153,15 @@
         >
           <i class="fas fa-align-left mr-3"></i>
           Account Settings
+        </a>
+        <a
+          id="adminPage"
+          style="display: none"
+          href="admin.html"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-align-left mr-3"></i>
+          Admin
         </a>
       </nav>
       <a
@@ -272,6 +273,15 @@
             Account Settings
           </a>
           <a
+            id="adminPage-mobile"
+            style="display: none"
+            href="admin.html"
+            class="flex items-center text-white py-2 pl-4 nav-item"
+          >
+            <i class="fas fa-tablet-alt mr-3"></i>
+            Admin
+          </a>
+          <a
             href="javascript:signOut();"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
@@ -355,7 +365,7 @@
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                       id="cus_discordId"
                       name="discordId"
-                      type="number"
+                      type="text"
                       placeholder="Discord ID"
                       aria-label="Discord ID"
                     />
@@ -428,21 +438,6 @@
                   id="passwordSettingsForm"
                   class="p-10 bg-white rounded shadow-xl"
                 >
-                  <div class="mt-2">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_oldPassword"
-                      >Old Password</label
-                    >
-                    <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_oldPassword"
-                      name="oldPassword"
-                      type="password"
-                      placeholder="Old Password"
-                      aria-label="Old Password"
-                    />
-                  </div>
                   <div class="mt-2">
                     <label
                       class="block text-sm text-gray-600"

@@ -2,7 +2,19 @@ window.addEventListener("DOMContentLoaded", async () => {
   await checkLogin();
   setPfp();
   removeUpgradeLink();
+  displayAdmin();
 });
+
+async function displayAdmin() {
+  let accountType = window.sessionStorage.getItem("AccountType");
+  if (accountType == "Staff") {
+    let adminPage = document.getElementById("adminPage");
+    let adminPageMobile = document.getElementById("adminPage-mobile");
+    adminPage.style.display = "flex";
+    adminPageMobile.style.display = "flex";
+  }
+}
+
 async function setPfp() {
   try {
     let imgTag = document.getElementById("pfp-img");
@@ -31,7 +43,7 @@ async function checkLogin() {
   }
 }
 
-function signOut() {
+async function signOut() {
   window.sessionStorage.removeItem("Authorization");
   window.sessionStorage.removeItem("PFP");
   window.sessionStorage.removeItem("AccountType");

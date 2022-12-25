@@ -46,35 +46,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="apple-touch-icon"
-      sizes="180x180"
-      href="https://discord.repair/content/images/logo.png"
+      sizes="128x128"
+      href="/content/images/logo-128.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo-32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo-16.png"
     />
-    <link
-      rel="manifest"
-      href="https://discord.repair/content/images/logo.png"
-    />
-    <link
-      rel="mask-icon"
-      href="https://discord.repair/content/images/logo.png"
-      color="#5bbad5"
-    />
+    <link rel="mask-icon" href="/content/images/logo.png" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#00aba9" />
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="https://discord.repair/content/images/logo.png"
+      href="/content/images/logo.ico"
     />
     <script defer src="/content/js/dash.js"></script>
 
@@ -167,6 +159,15 @@
         >
           <i class="fas fa-align-left mr-3"></i>
           Account Settings
+        </a>
+        <a
+          id="adminPage"
+          style="display: none"
+          href="admin.html"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-align-left mr-3"></i>
+          Admin
         </a>
       </nav>
       <a
@@ -278,6 +279,15 @@
             Account Settings
           </a>
           <a
+            id="adminPage-mobile"
+            style="display: none"
+            href="admin.html"
+            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+          >
+            <i class="fas fa-tablet-alt mr-3"></i>
+            Admin
+          </a>
+          <a
             href="javascript:signOut();"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
@@ -315,13 +325,13 @@
                     to migrate your members to.
                   </p>
                   <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="cus_server"
+                    <label class="block text-sm text-gray-600" for="cus_name"
                       >Server or Bot Name</label
                     >
                     <input
                       class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_server"
-                      name="server"
+                      id="cus_name"
+                      name="name"
                       type="text"
                       placeholder="Server or Bot Name/Key"
                       aria-label="Server or Bot"
@@ -335,7 +345,7 @@
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                       id="cus_guildId"
                       name="guildId"
-                      type="number"
+                      type="text"
                       placeholder="Guild ID"
                       aria-label="Guild ID"
                     />
@@ -348,7 +358,7 @@
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                       id="cus_roleId"
                       name="roleId"
-                      type="number"
+                      type="text"
                       placeholder="Verify Role ID"
                       aria-label="Role ID"
                     />
@@ -361,7 +371,7 @@
                       class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
                       id="cus_userId"
                       name="userId"
-                      type="number"
+                      type="text"
                       placeholder="User ID"
                       aria-label="User ID"
                     />

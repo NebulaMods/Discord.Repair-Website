@@ -1,24 +1,26 @@
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   getBots();
 });
 
 async function createBot() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["createBotForm"];
+  let form = document.forms["createBotForm"];
   const FD = new FormData(form);
-  XHR.addEventListener("load", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    document.forms["createBotForm"]["name"].value = jsonData.name;
-    document.forms["createBotForm"]["key"].value = jsonData.key;
-    document.forms["createBotForm"]["token"].value = jsonData.token;
-    document.forms["createBotForm"]["clientSecret"].value =
-      jsonData.clientSecret;
-    document.forms["createBotForm"]["clientId"].value = jsonData.clientId;
-    document.forms["createBotForm"]["botType"].value = jsonData.botType;
+  XHR.addEventListener("load", async (event) => {
+    let jsonData = JSON.parse(event.target.responseText);
+    if (jsonData.success == null) {
+      document.forms["createBotForm"].reset();
+      await getBots();
+      alert("successfully created bot.");
+      return;
+    }
+    alert(jsonData.details);
   });
   XHR.addEventListener("error", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    document.forms["createBotForm"].reset();
+    alert(
+      "An error occurred, if this continues to occur please contact an admin."
+    );
   });
   XHR.open("PUT", "https://api.discord.repair/v1/custom-bot");
   XHR.setRequestHeader("Content-Type", "application/json");
@@ -27,28 +29,32 @@ async function createBot() {
     window.sessionStorage.getItem("Authorization")
   );
   FD.delete("key");
-  if (FD.get("botType") == "") {
-    FD.delete("botType");
-  }
-  var json = JSON.stringify(Object.fromEntries(FD));
+  //FD.get("botType") = "EVERYTHING";
+  let json = JSON.stringify(Object.fromEntries(FD));
   XHR.send(json);
 }
 
 async function modifyBot() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["modifyBotForm"];
+  let form = document.forms["modifyBotForm"];
   const FD = new FormData(form);
-  XHR.addEventListener("load", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
+  XHR.addEventListener("load", async (event) => {
+    let jsonData = JSON.parse(event.target.responseText);
+    if (jsonData.success == true) {
+      await getBots();
+    }
+    document.forms["modifyBotForm"].reset();
     alert(jsonData.details);
   });
   XHR.addEventListener("error", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    document.forms["modifyBotForm"].reset();
+    alert(
+      "An error occurred, if this continues to occur please contact an admin."
+    );
   });
   XHR.open(
     "PATCH",
-    "https://api.discord.repair/v1/custom-bot/" + FD.get("key")
+    "https://api.discord.repair/v1/custom-bot/" + FD.get("name")
   );
   XHR.setRequestHeader("Content-Type", "application/json");
   XHR.setRequestHeader(
@@ -71,24 +77,27 @@ async function modifyBot() {
   if (FD.get("botType") == "") {
     FD.delete("botType");
   }
-  var json = JSON.stringify(Object.fromEntries(FD));
+  let json = JSON.stringify(Object.fromEntries(FD));
   XHR.send(json);
 }
 
 async function deleteBot() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["deleteBotForm"]["name"].value;
-  console.log(form);
-  if (form == null || form.length == 0) {
-    return;
-  }
-  XHR.addEventListener("load", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
+  let form = document.forms["deleteBotForm"]["name"].value;
+
+  XHR.addEventListener("load", async (event) => {
+    let jsonData = JSON.parse(event.target.responseText);
+    if (jsonData.success == true) {
+      await getBots();
+    }
+    document.forms["deleteBotForm"].reset();
     alert(jsonData.details);
   });
   XHR.addEventListener("error", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    document.forms["deleteBotForm"].reset();
+    alert(
+      "An error occurred, if this continues to occur please contact an admin."
+    );
   });
   XHR.open("DELETE", "https://api.discord.repair/v1/custom-bot/" + form);
   XHR.setRequestHeader(
@@ -100,26 +109,27 @@ async function deleteBot() {
 
 async function getBot() {
   const XHR = new XMLHttpRequest();
-  var form = document.forms["modifyBotForm"]["name"].value;
-  if (form == null || form.length == 0) {
-    form = document.forms["modifyBotForm"]["key"].value;
-    if (form == null || form.length == 0) {
+  let form = document.forms["modifyBotForm"]["name"].value;
+  XHR.addEventListener("load", (event) => {
+    document.forms["modifyBotForm"].reset();
+    let jsonData = JSON.parse(event.target.responseText);
+    if (jsonData.success == null) {
+      document.forms["modifyBotForm"]["name"].value = jsonData.name;
+      document.forms["modifyBotForm"]["key"].value = jsonData.key;
+      document.forms["modifyBotForm"]["token"].value = jsonData.token;
+      document.forms["modifyBotForm"]["clientSecret"].value =
+        jsonData.clientSecret;
+      document.forms["modifyBotForm"]["clientId"].value = jsonData.clientId;
+      document.forms["modifyBotForm"]["botType"].value = jsonData.botType;
       return;
     }
-  }
-  XHR.addEventListener("load", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    document.forms["modifyBotForm"]["name"].value = jsonData.name;
-    document.forms["modifyBotForm"]["key"].value = jsonData.key;
-    document.forms["modifyBotForm"]["token"].value = jsonData.token;
-    document.forms["modifyBotForm"]["clientSecret"].value =
-      jsonData.clientSecret;
-    document.forms["modifyBotForm"]["clientId"].value = jsonData.clientId;
-    document.forms["modifyBotForm"]["botType"].value = jsonData.botType;
+    alert(jsonData.details);
   });
   XHR.addEventListener("error", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    document.forms["modifyBotForm"].reset();
+    alert(
+      "An error occurred, if this continues to occur please contact an admin."
+    );
   });
   XHR.open("GET", "https://api.discord.repair/v1/custom-bot/" + form);
   XHR.setRequestHeader(
@@ -130,37 +140,37 @@ async function getBot() {
 }
 
 async function getBots() {
+  document.getElementById("allBots").innerHTML = "";
   const XHR = new XMLHttpRequest();
   XHR.addEventListener("load", (event) => {
-    var bots = JSON.parse(event.target.responseText);
-    bots.forEach(AddBotInfo);
-    function AddBotInfo(bot, index) {
-      var table = document.getElementById("allBots");
-      var row = table.insertRow(index);
+    let bots = JSON.parse(event.target.responseText);
+    if (bots.success == null) {
+      bots.forEach(AddBotInfo);
+      function AddBotInfo(bot, index) {
+        let table = document.getElementById("allBots");
+        let row = table.insertRow(index);
 
-      var name = row.insertCell(0);
-      name.innerHTML = bot.name;
-      var token = row.insertCell(1);
-      token.innerHTML = bot.token;
-      var clientSecret = row.insertCell(2);
-      clientSecret.innerHTML = bot.clientSecret;
-      var clientId = row.insertCell(3);
-      clientId.innerHTML = bot.clientId;
-      var botType = row.insertCell(4);
-      botType.innerHTML = bot.botType;
-      var key = row.insertCell(5);
-      key.innerHTML = bot.key;
-      name.classList.add("w-1/3", "text-left", "py-3", "px-4");
-      token.classList.add("w-1/3", "text-left", "py-3", "px-4");
-      clientSecret.classList.add("w-1/3", "text-left", "py-3", "px-4");
-      clientId.classList.add("w-1/3", "text-left", "py-3", "px-4");
-      botType.classList.add("w-1/3", "text-left", "py-3", "px-4");
-      key.classList.add("w-1/3", "text-left", "py-3", "px-4");
+        let name = row.insertCell(0);
+        name.innerHTML = bot.name;
+        let clientSecret = row.insertCell(1);
+        clientSecret.innerHTML = bot.clientSecret;
+        let clientId = row.insertCell(2);
+        clientId.innerHTML = bot.clientId;
+        let token = row.insertCell(3);
+        token.innerHTML = bot.token;
+        name.classList.add("text-left", "py-3", "px-4");
+        clientSecret.classList.add("text-left", "py-3", "px-4");
+        clientId.classList.add("text-left", "py-3", "px-4");
+        token.classList.add("text-left", "py-3", "px-4");
+      }
+      return;
     }
+    alert(bots.details);
   });
   XHR.addEventListener("error", (event) => {
-    var jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    alert(
+      "An error occurred while trying to fetch all your bots, if this continues to occur please contact an admin."
+    );
   });
   XHR.open("GET", "https://api.discord.repair/v1/custom-bot");
   XHR.setRequestHeader(

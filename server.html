@@ -1,40 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Register</title>
+    <title>Verify</title>
 
     <!--#region Meta Data-->
     <meta charset="UTF-8" />
-    <meta property="og:title" content="Register" />
-    <meta property="og:url" content="https://discord.repair/register.html" />
+    <meta property="og:title" content="Verify" />
+    <meta property="og:url" content="https://discord.repair/verify.html" />
     <meta
       property="og:site_name"
-      content="Create an account and start using the backup service you wish you found before it was too late."
+      content="Verify to recieve access to the server."
     />
     <meta
       name="og:description"
-      content="Create an account and start using the backup service you wish you found before it was too late."
+      content="Verify to recieve access to the server."
     />
     <meta
       name="og:image"
       content="https://discord.repair./content/images/logo.png"
     />
     <meta name="twitter:card" content="summary_small_image" />
-    <meta
-      property="twitter:url"
-      content="https://discord.repair/register.html"
-    />
+    <meta property="twitter:url" content="https://discord.repair/verify.html" />
     <meta
       name="twitter:image"
       content="https://discord.repair/content/images/logo.png"
     />
     <meta
       name="twitter:description"
-      content="Create an account and start using the backup service you wish you found before it was too late."
+      content="Verify to recieve access to the server."
     />
     <meta
       name="description"
-      content="Create an account and start using the backup service you wish you found before it was too late."
+      content="Verify to recieve access to the server."
     />
     <meta name="theme-color" content="#3d68ff" />
     <meta http-equiv="pragma" content="no-cache" />
@@ -70,10 +67,10 @@
       type="image/x-icon"
       href="/content/images/logo.ico"
     />
-
-    <script defer src="/content/js/register.js"></script>
+    <script defer src="/content/js/verify.js"></script>
 
     <!--#endregion-->
+
     <script defer src="https://www.google.com/recaptcha/api.js"></script>
     <link
       rel="stylesheet"
@@ -122,69 +119,12 @@
     <main
       class="font-family-poppins flex items-center justify-center h-screen bg-main"
     >
-      <form id="registerForm">
+      <form id="verifyForm">
         <div class="bg-white text-black form-width p-6 rounded shadow-xl">
+          <h1 class="text-center text-3xl text-black pb-6">Verification</h1>
           <div class="flex items-center justify-center p-6">
             <img src="/content/images/logo.png" class="h-32" />
           </div>
-
-          <div class="textbox-bg p-2 rounded m-2">
-            <span class="input-icon-addon">
-              <i class="icon-colour fa-solid fa-user"></i>
-            </span>
-            <input
-              class="input-width py-1 pl-1 text-gray-700 bg-gray-200 rounded"
-              id="cus_username"
-              name="username"
-              type="text"
-              required=""
-              placeholder="Username"
-              aria-label="Username"
-            />
-          </div>
-          <div class="textbox-bg p-2 rounded m-2">
-            <span class="input-icon-addon">
-              <i class="icon-colour fa-solid fa-envelope"></i>
-            </span>
-            <input
-              class="input-width py-1 pl-1 text-gray-700 bg-gray-200 rounded"
-              id="cus_email"
-              name="email"
-              type="email"
-              required=""
-              placeholder="Email"
-              aria-label="Email"
-            />
-          </div>
-          <div class="textbox-bg p-2 rounded m-2">
-            <span class="input-icon-addon">
-              <i class="icon-colour fa fa-key"></i>
-            </span>
-            <input
-              class="input-width py-1 pl-1 text-gray-700 bg-gray-200 rounded"
-              id="cus_password"
-              name="password"
-              type="password"
-              required=""
-              placeholder="Password"
-              aria-label="Password"
-            />
-          </div>
-          <div class="textbox-bg p-2 rounded m-2">
-            <span class="input-icon-addon">
-              <i class="icon-colour fa fa-key"></i>
-            </span>
-            <input
-              class="input-width py-1 pl-1 text-gray-700 bg-gray-200 rounded"
-              id="cus_passwordCheck"
-              name="passwordCheck"
-              type="password"
-              required=""
-              placeholder="Password Again"
-              aria-label="Password Again"
-            />
-          </div>
-          <br />
           <center>
             <div
               class="g-recaptcha"
@@ -194,17 +134,28 @@
           </center>
           <div class="p-6">
             <button
-              type="submit"
+              onclick="VerifyUser();"
+              type="button"
               class="p-2 rounded btn-text focus:outline-none login-btn hover:text-white focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer inline-flex items-center w-full justify-center items-center font-medium focus:outline-none"
             >
-              Register
+              Verify
             </button>
           </div>
-          <p style="text-align: center">
-            Have an account already? <a href="/login.html">Login now!</a>
-          </p>
         </div>
       </form>
+      <div
+        id="successfulVerify"
+        style="display: none"
+        class="bg-white text-black form-width p-6 rounded shadow-xl"
+      >
+        <h1 class="text-center text-3xl text-black pb-6">Verification</h1>
+        <div class="flex items-center justify-center p-6">
+          <img src="/content/images/logo.png" class="h-32" />
+        </div>
+        <center>
+          <p>Successfully verified/updated user, enjoy the server!</p>
+        </center>
+      </div>
     </main>
   </body>
 </html>

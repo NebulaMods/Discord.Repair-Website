@@ -2,17 +2,18 @@
 <html lang="en">
   <head>
     <script defer src="/content/js/dash-utils.js"></script>
-    <title>Users | Dashboard</title>
+    <script defer src="/content/js/admin.js"></script>
+    <title>Admin | Dashboard</title>
 
     <!--#region Meta Data-->
     <meta charset="UTF-8" />
-    <meta property="og:title" content="Users | Dashboard" />
+    <meta property="og:title" content="Admin | Dashboard" />
     <meta
       property="og:url"
-      content="https://discord.repair/dashboard/users.html"
+      content="https://discord.repair/dashboard/admin.html"
     />
-    <meta property="og:site_name" content="Manage your linked users." />
-    <meta name="og:description" content="Manage your linked users." />
+    <meta property="og:site_name" content="Admin panel" />
+    <meta name="og:description" content="Admin panel" />
     <meta
       name="og:image"
       content="https://discord.repair./content/images/logo.png"
@@ -20,14 +21,14 @@
     <meta name="twitter:card" content="summary_small_image" />
     <meta
       property="twitter:url"
-      content="https://discord.repair/dashboard/users.html"
+      content="https://discord.repair/dashboard/admin.html"
     />
     <meta
       name="twitter:image"
       content="https://discord.repair/content/images/logo.png"
     />
-    <meta name="twitter:description" content="Manage your linked users." />
-    <meta name="description" content="Manage your linked users." />
+    <meta name="twitter:description" content="Admin panel" />
+    <meta name="description" content="Admin panel" />
     <meta name="theme-color" content="#3d68ff" />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="window-target" content="_top" />
@@ -62,7 +63,6 @@
       type="image/x-icon"
       href="/content/images/logo.ico"
     />
-    <script defer src="/content/js/users.js"></script>
 
     <!--#endregion-->
 
@@ -71,6 +71,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
       rel="stylesheet"
     />
+
     <style>
       @import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
       .font-family-karla {
@@ -135,7 +136,7 @@
         </a>
         <a
           href="users.html"
-          class="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
           <i class="fas fa-align-left mr-3"></i>
           Users
@@ -156,9 +157,8 @@
         </a>
         <a
           id="adminPage"
-          style="display: none"
           href="admin.html"
-          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+          class="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
         >
           <i class="fas fa-align-left mr-3"></i>
           Admin
@@ -246,7 +246,7 @@
           </a>
           <a
             href="bots.html"
-            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+            class="flex items-center text-white py-4 pl-6 nav-item"
           >
             <i class="fas fa-table mr-3"></i>
             Bots
@@ -262,7 +262,7 @@
             href="help.html"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
-            <i class="fas fa-align-left mr-3"></i>
+            <i class="fas fa-tablet-alt mr-3"></i>
             Help
           </a>
           <a
@@ -274,11 +274,10 @@
           </a>
           <a
             id="adminPage-mobile"
-            style="display: none"
             href="admin.html"
-            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+            class="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
           >
-            <i class="fas fa-tablet-alt mr-3"></i>
+            <i class="fas fa-table mr-3"></i>
             Admin
           </a>
           <a
@@ -302,6 +301,229 @@
 
       <div class="w-full overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6">
+          <h1 class="text-3xl text-black pb-6">Users</h1>
+          <div class="flex flex-wrap">
+            <div class="w-full lg:w-1/2 mt-6 pr-0 lg:pr-2">
+              <p class="text-xl pb-6 flex items-center">
+                <i class="fas fa-list mr-3"></i> Modify User
+              </p>
+              <div class="leading-loose">
+                <form
+                  id="modifyUserForm"
+                  class="p-10 bg-white rounded shadow-xl"
+                >
+                  <p>Click "Get" before modifying an existing user.</p>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyUsername"
+                      >Username</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyUsername"
+                      name="username"
+                      type="text"
+                      placeholder="Username"
+                      aria-label="Username"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyEmail"
+                      >Email</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyEmail"
+                      name="email"
+                      type="email"
+                      placeholder="Email Address"
+                      aria-label="Email"
+                    />
+                  </div>
+                  <div class="inline-block mt-2 w-1/2 pr-1">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyAccountType"
+                      >Account Type</label
+                    >
+                    <input
+                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyAccountType"
+                      name="accountType"
+                      type="text"
+                      placeholder="Account Type"
+                      aria-label="Account Type"
+                    />
+                  </div>
+                  <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyPfp"
+                      >Profile Picture</label
+                    >
+                    <input
+                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyPfp"
+                      name="pfp"
+                      type="text"
+                      placeholder="Profile Picture"
+                      aria-label="Profile Picture"
+                    />
+                  </div>
+                  <div class="inline-block mt-2 w-1/2 pr-1">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyBan"
+                      >Banned</label
+                    >
+                    <input
+                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyBan"
+                      name="banned"
+                      type="text"
+                      placeholder="False"
+                      aria-label="False"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyMembershipExpiry"
+                      >Membership Expiry</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyMembershipExpiry"
+                      name="expiry"
+                      type="datetime"
+                      placeholder="Never"
+                      aria-label="Never"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyLastIp"
+                      >Last IP</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyLastIp"
+                      name="lastIp"
+                      type="text"
+                      placeholder="IP Address"
+                      aria-label="IP"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyDiscordId"
+                      >Discord ID</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyDiscordId"
+                      name="discordId"
+                      type="number"
+                      placeholder="Discord ID"
+                      aria-label="Discord ID"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyPassword"
+                      >Password</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyPassword"
+                      name="password"
+                      type="password"
+                      placeholder="Password"
+                      aria-label="Password"
+                    />
+                  </div>
+                  <div class="mt-2">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_modifyapiToken"
+                      >API Token</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_modifyapiToken"
+                      name="apiToken"
+                      type="apiToken"
+                      placeholder="API Token"
+                      aria-label="API Token"
+                    />
+                  </div>
+                  <div class="mt-6">
+                    <center>
+                      <button
+                        onclick="javascript:getUser();"
+                        class="px-8 py-1 m-1 text-white font-light tracking-wider bg-gray-900 rounded"
+                        type="button"
+                      >
+                        Get
+                      </button>
+                      <button
+                        onclick="javascript:modifyUser();"
+                        class="px-8 py-1 m-1 text-white font-light tracking-wider bg-gray-900 rounded"
+                        type="button"
+                      >
+                        Modify
+                      </button>
+                    </center>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="w-full lg:w-1/2 my-6 pl-0 lg:pl-2">
+              <p class="text-xl pb-6 flex items-center">
+                <i class="fas fa-list mr-3"></i> Delete User
+              </p>
+              <div class="leading-loose">
+                <form
+                  class="p-10 bg-white rounded shadow-xl"
+                  id="deleteUserForm"
+                >
+                  <div class="">
+                    <label
+                      class="block text-sm text-gray-600"
+                      for="cus_deleteUser"
+                      >Username/Email</label
+                    >
+                    <input
+                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      id="cus_deleteUser"
+                      name="user"
+                      type="text"
+                      required=""
+                      placeholder="Username/Email"
+                      aria-label="Username/Email"
+                    />
+                  </div>
+                  <div class="mt-6">
+                    <center>
+                      <button
+                        onclick="deleteUser();"
+                        class="px-8 py-1 m-1 text-white font-light tracking-wider bg-gray-900 rounded"
+                        type="button"
+                      >
+                        Delete
+                      </button>
+                    </center>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
           <div class="w-full mt-12">
             <p class="text-xl pb-3 flex items-center">
               <i class="fas fa-list mr-3"></i> All Users
@@ -313,27 +535,32 @@
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
-                      Discord ID
-                    </th>
-                    <th
-                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
-                    >
                       Username
                     </th>
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
-                      IP Address
+                      Email
                     </th>
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
-                      Server Name
+                      Account Type
                     </th>
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
-                      Bot Name
+                      Membership Expiry
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Created Date
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Last IP
                     </th>
                   </tr>
                 </thead>
