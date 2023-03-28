@@ -60,7 +60,6 @@
       sizes="16x16"
       href="/content/images/logo-16.png"
     />
-    <link rel="manifest" href="/content/images/logo.png" />
     <link rel="mask-icon" href="/content/images/logo.png" color="#5bbad5" />
     <meta name="msapplication-TileColor" content="#00aba9" />
     <link
@@ -69,79 +68,131 @@
       href="/content/images/logo.ico"
     />
 
-    <link rel="stylesheet" href="/content/css/style.min.css" />
-
     <!--#endregion-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <script
+      src="https://kit.fontawesome.com/42d5adcbca.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <!-- Hero(extended) navbar -->
-    <div class="navbar navbar--extended">
-      <nav class="nav__mobile"></nav>
-      <div class="container">
-        <div class="navbar__inner">
-          <a href="#" class="navbar__logo">Discord.Repair</a>
-          <nav class="navbar__menu">
-            <ul>
-              <li><a href="/login.html">Login</a></li>
-              <li><a href="/register.html">Register</a></li>
-            </ul>
-          </nav>
-          <div class="navbar__menu-mob">
-            <a href="" id="toggle"
-              ><svg
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                  class=""
-                ></path></svg
-            ></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Hero unit -->
-    <div class="hero">
-      <div class="hero__overlay hero__overlay--gradient"></div>
-      <div class="hero__mask"></div>
-      <div class="hero__inner">
-        <div class="container">
-          <div class="hero__content">
-            <div class="hero__content__inner" id="navConverter">
-              <h1 class="hero__title">
-                The Discord backup service you wish you found sooner
-              </h1>
-              <p class="hero__text">
-                Discord.Repair is a highly advance backup utility designed to
-                backup users, channels, messsages, roles, and more! Register now
-                for free to test out the beta.
-              </p>
-              <a href="/dashboard/index.html" class="button button__accent"
-                >Access Dashboard</a
-              >
+  <body class="font-sans antialiased font-normal text-slate-500">
+    <div class="bg-gradient-to-tl from-violet-600 to-indigo-600 min-h-screen">
+      <!-- Navbar -->
+      <nav class="flex flex-wrap items-center justify-center">
+        <div navbar-menu class="mt-6 mb-4">
+          <ul class="flex flex-row pl-0 mx-auto mb-0 list-none">
+            <!--Home-->
+            <li class="mr-6">
               <a
-                href="https://api.discord.repair"
-                class="button button__accent"
-                target="_blank"
-                >Access API</a
+                class="flex items-center font-normal transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-white"
+                aria-current="page"
+                href="./index.html"
               >
+                <i class="fa fa-home opacity-60"></i>
+                Home
+              </a>
+            </li>
+            <!--Sign In-->
+            <li class="mr-6">
+              <a
+                class="block font-normal transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-white"
+                href="./login.html"
+              >
+                <i class="fas fa-key opacity-60"></i>
+                Login
+              </a>
+            </li>
+            <!--Sign Up-->
+            <li>
+              <a
+                class="block font-normal transition-all lg-max:opacity-0 duration-250 ease-soft-in-out text-sm text-white"
+                href="./register.html"
+              >
+                <i class="fas fa-user-circle opacity-60"></i>
+                Register
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!--Some Modal-->
+      <div id="someModal" class="hidden">
+        <!--Overlay-->
+        <div
+          class="fixed z-10 top-0 left-0 w-full h-full bg-black opacity-50 modal-overlay"
+        ></div>
+        <!--Modal-->
+        <div
+          class="fixed z-50 overflow-y-auto top-1/3 right-0 left-0 justify-center items-center text-center flex mx-4"
+        >
+          <div
+            class="mx-auto min-w-0 mb-6 p-4 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border"
+          >
+            <!--Header-->
+            <div
+              class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
+            >
+              <h6
+                class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-violet-600 to-indigo-600 bg-clip-text"
+              >
+                An Error Occurred
+              </h6>
+            </div>
+            <!--Content-->
+            <div class="flex-auto px-2 pt-0 pb-2">
+              <div class="w-full">
+                <p id="errorModalText">Some text</p>
+              </div>
+              <div
+                class="text-center flex flex-wrap justify-center items-center mt-2"
+              >
+                <button
+                  onclick="javascript:ToggleErrorModal();"
+                  class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <!--Content-->
+      <main class="mt-10 mx-2">
+        <div class="flex justify-center w-full">
+          <div
+            class="rounded-lg bg-white text-center shadow-xl transition-all p-4 px-24 mb-2"
+          >
+            <div class="flex justify-center">
+              <img src="/content/images/logo.png" class="h-32" />
+            </div>
+            <h1
+              class="relative z-10 font-bold text-xl text-transparent bg-gradient-to-tl from-violet-600 to-indigo-600 bg-clip-text"
+            >
+              Discord.Repair
+            </h1>
+          </div>
+        </div>
+        <div class="flex justify-center w-full">
+          <div class="text-center text-white transition-all p-4 mb-2">
+            <h3 class="relative z-10 font-bold mb-2">
+              The Discord backup service you wish you found sooner
+            </h3>
+            <p class="mb-0">
+              Discord.Repair is a highly advance backup utility designed to
+              backup users, channels, messsages, roles, and more! Register now
+              for free to test out the beta.
+            </p>
+
+            <div class="flex-auto"></div>
+          </div>
+        </div>
+      </main>
     </div>
-    <!-- Footer -->
-    <div class="footer footer--dark">
-      <div class="container">
-        <p style="text-align: center">
-          <a href="#">Discord.Repair © 2022</a> - Owned &amp; Operated by
-          <a href="https://nebulamods.ca" target="_blank">Nebula Mods, Inc.</a>
-        </p>
-      </div>
-    </div>
-    <script src="/content/js/app.min.js"></script>
   </body>
 </html>

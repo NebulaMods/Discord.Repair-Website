@@ -8,24 +8,23 @@ async function updateUser() {
   let formData = new FormData(form);
   XHR.addEventListener("load", (event) => {
     let jsonData = JSON.parse(event.target.responseText);
-    if (jsonData.details.includes("success")) {
-      alert(jsonData.details);
-    } else {
-      window.sessionStorage.removeItem("Authorization");
-      window.sessionStorage.setItem("Authorization", jsonData.details);
-      //profile picture
-      alert("successfully updated your account.");
+    if (jsonData.success == false) {
+      ToggleErrorModal(jsonData.details);
+      return;
     }
+    //profile picture
+    ToggleSuccessModal("successfully updated your account.");
   });
   XHR.addEventListener("error", (event) => {
     let jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    ToggleErrorModal(jsonData.details);
   });
   XHR.open("PATCH", "https://api.discord.repair/v1/user/@me");
   XHR.setRequestHeader(
     "Authorization",
     window.sessionStorage.getItem("Authorization")
   );
+  XHR.setRequestHeader("Content-Type", "application/json");
   formData.delete("membershipExpiry");
   formData.delete("accountType");
   formData.delete("apiToken");
@@ -33,27 +32,33 @@ async function updateUser() {
   XHR.send(jsonData);
 }
 
-async function updateUserPassword() {
+async function changeUserPassword() {
   const XHR = new XMLHttpRequest();
   let form = document.forms["passwordSettingsForm"];
   let formData = new FormData(form);
-  XHR.addEventListener("load", (event) => {
+  XHR.addEventListener("load", async (event) => {
     let jsonData = JSON.parse(event.target.responseText);
+    if (jsonData.success == false) {
+      ToggleErrorModal(jsonData.details);
+      return;
+    }
     window.sessionStorage.removeItem("Authorization");
     window.sessionStorage.setItem("Authorization", jsonData.details);
-    alert("successfully updated your password.");
+    await getUser();
+    ToggleSuccessModal("successfully updated your password.");
   });
   XHR.addEventListener("error", (event) => {
     let jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    ToggleErrorModal(jsonData.details);
   });
   XHR.open("PATCH", "https://api.discord.repair/v1/user/@me");
   XHR.setRequestHeader(
     "Authorization",
     window.sessionStorage.getItem("Authorization")
   );
+  XHR.setRequestHeader("Content-Type", "application/json");
   if (formData.get("newPassword") != formData.get("newPasswordCheck")) {
-    alert("Passwords do not match, please try again.");
+    ToggleErrorModal("Passwords do not match, please try again.");
   }
   formData.delete("newPasswordCheck");
   //base64 password
@@ -66,6 +71,10 @@ async function getUser() {
   const XHR = new XMLHttpRequest();
   XHR.addEventListener("load", (event) => {
     let jsonData = JSON.parse(event.target.responseText);
+    if (jsonData.success == false) {
+      ToggleErrorModal(jsonData.details);
+      return;
+    }
     document.forms["accountSettingsForm"]["username"].value = jsonData.username;
     document.forms["accountSettingsForm"]["email"].value = jsonData.email;
     document.forms["accountSettingsForm"]["accountType"].value =
@@ -80,7 +89,7 @@ async function getUser() {
   });
   XHR.addEventListener("error", (event) => {
     let jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+    ToggleErrorModal(jsonData.details);
   });
   XHR.open("GET", "https://api.discord.repair/v1/user/@me");
   XHR.setRequestHeader(
@@ -107,4 +116,31 @@ function arrayBufferToBase64(buffer) {
     binary += String.fromCharCode(bytes[i]);
   }
   return window.btoa(binary);
+}
+
+function ToggleErrorModal(error) {
+  const modal = document.getElementById("errorModal");
+  modal.classList.toggle("hidden");
+  const body = document.querySelector("body");
+  body.classList.toggle("overflow-hidden");
+  if (error || error !== null || error !== "" || error !== "undefined") {
+    const errorText = document.getElementById("errorModalText");
+    errorText.innerText = error;
+  }
+}
+
+function ToggleSuccessModal(message) {
+  const modal = document.getElementById("successModal");
+  modal.classList.toggle("hidden");
+  const body = document.querySelector("body");
+  body.classList.toggle("overflow-hidden");
+  if (
+    message ||
+    message !== null ||
+    message !== "" ||
+    message !== "undefined"
+  ) {
+    const successText = document.getElementById("successModalText");
+    successText.innerText = message;
+  }
 }

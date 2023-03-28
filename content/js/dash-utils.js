@@ -33,12 +33,16 @@ async function removeUpgradeLink() {
 async function checkLogin() {
   let loggedIn = window.sessionStorage.getItem("Authorization");
   if (loggedIn == null) {
-    window.location.replace("https://discord.repair/login.html");
+    window.location.replace(
+      `${location.protocol}//${window.location.hostname}/login.html`
+    );
     return;
   }
   if (loggedIn == "invalid password, please try again.") {
     window.sessionStorage.removeItem("Authorization");
-    window.location.replace("https://discord.repair/login.html");
+    window.location.replace(
+      `${location.protocol}//${window.location.hostname}/login.html`
+    );
     return;
   }
 }
@@ -47,5 +51,7 @@ async function signOut() {
   window.sessionStorage.removeItem("Authorization");
   window.sessionStorage.removeItem("PFP");
   window.sessionStorage.removeItem("AccountType");
-  window.location.replace("https://discord.repair/login.html");
+  window.location.replace(
+    `${location.protocol}//${window.location.hostname}/login.html`
+  );
 }

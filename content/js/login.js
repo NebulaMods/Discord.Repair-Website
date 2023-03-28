@@ -1,7 +1,9 @@
 window.addEventListener("load", async () => {
   let loggedIn = window.sessionStorage.getItem("Authorization");
   if (loggedIn != null) {
-    window.location.replace("https://discord.repair/dashboard/index.html");
+    window.location.replace(
+      `${location.protocol}//${window.location.hostname}/dashboard/index.html`
+    );
     return;
   }
 
@@ -32,8 +34,9 @@ async function SendLoginData(form) {
       //
       return;
     } else {
-      alert(jsonData.details);
       grecaptcha.reset();
+      form.reset();
+      ToggleErrorModal(jsonData.details);
       return;
     }
     //alert(event.target.responseText);
@@ -41,8 +44,9 @@ async function SendLoginData(form) {
 
   // Define what happens in case of error
   XHR.addEventListener("error", (event) => {
-    alert("Oops! Something went wrong.");
     grecaptcha.reset();
+    form.reset();
+    ToggleErrorModal(event.target.responseText);
   });
 
   // Set up our request
@@ -63,7 +67,9 @@ async function getUserInfo(authToken) {
     let jsonData = JSON.parse(event.target.responseText);
     window.sessionStorage.setItem("PFP", jsonData.pfp);
     window.sessionStorage.setItem("AccountType", jsonData.accountType);
-    window.location.replace("https://discord.repair/dashboard/index.html");
+    window.location.replace(
+      `${location.protocol}//${window.location.hostname}/dashboard/index.html`
+    );
   });
   XHR.addEventListener("error", (event) => {
     console.log(event.target.responseText);
@@ -89,4 +95,13 @@ function arrayBufferToBase64(buffer) {
     binary += String.fromCharCode(bytes[i]);
   }
   return window.btoa(binary);
+}
+
+function ToggleErrorModal(error) {
+  const modal = document.getElementById("errorModal");
+  modal.classList.toggle("hidden");
+  const body = document.querySelector("body");
+  body.classList.toggle("overflow-hidden");
+  const errorText = document.getElementById("errorModalText");
+  errorText.innerText = error;
 }

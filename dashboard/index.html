@@ -68,96 +68,80 @@
       type="image/x-icon"
       href="/content/images/logo.ico"
     />
-    <script defer src="/content/js/dash.js"></script>
 
     <!--#endregion-->
 
     <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <script
+      src="https://kit.fontawesome.com/42d5adcbca.js"
+      crossorigin="anonymous"
+    ></script>
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
       rel="stylesheet"
     />
-    <style>
-      @import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
-      .font-family-karla {
-        font-family: karla;
-      }
-      .bg-sidebar {
-        background: #3d68ff;
-      }
-      .cta-btn {
-        color: #3d68ff;
-      }
-      .upgrade-btn {
-        background: #1947ee;
-      }
-      .upgrade-btn:hover {
-        background: #0038fd;
-      }
-      .active-nav-link {
-        background: #1947ee;
-      }
-      .nav-item:hover {
-        background: #1947ee;
-      }
-      .account-link:hover {
-        background: #3d68ff;
-      }
-    </style>
   </head>
   <body class="bg-gray-100 font-family-karla flex">
-    <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+    <aside
+      class="relative h-screen w-64 hidden sm:block shadow-xl bg-gradient-to-tl from-violet-600 to-indigo-600"
+    >
       <div class="p-6">
         <a
           href="index.html"
           class="text-white text-2xl font-semibold uppercase hover:text-gray-300"
           >Discord.Repair</a
         >
-        <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button> -->
       </div>
       <nav class="text-white text-base font-semibold pt-3">
         <a
           href="index.html"
-          class="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
+          class="flex items-center align-middle transition-all bg-transparent border-0 cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro ease-soft-in tracking-tight-soft bg-gradient-to-tr from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85 border-b border-t text-white py-4 pl-6 nav-item"
         >
           <i class="fas fa-tachometer-alt mr-3"></i>
           Dashboard
         </a>
         <a
-          href="servers.html"
-          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
-        >
-          <i class="fas fa-align-left mr-3"></i>
-          Servers
-        </a>
-        <a
           href="bots.html"
           class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
-          <i class="fas fa-align-left mr-3"></i>
+          <i class="fas fa-robot mr-3"></i>
           Bots
+        </a>
+        <a
+          href="servers.html"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-server mr-3"></i>
+          Servers
         </a>
         <a
           href="users.html"
           class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
-          <i class="fas fa-align-left mr-3"></i>
+          <i class="fas fa-users mr-3"></i>
           Users
+        </a>
+        <a
+          href="#"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-database mr-3"></i>
+          Migrate
         </a>
         <a
           href="help.html"
           class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
-          <i class="fas fa-align-left mr-3"></i>
+          <i class="fas fa-info mr-3"></i>
           Help
         </a>
         <a
           href="settings.html"
           class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
-          <i class="fas fa-align-left mr-3"></i>
+          <i class="fas fa-cog mr-3"></i>
           Account Settings
         </a>
         <a
@@ -173,7 +157,7 @@
       <a
         id="upgrade-link"
         href="#"
-        class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4"
+        class="absolute w-full bottom-0 flex items-center justify-center p-6 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
       >
         <i class="fas fa-arrow-circle-up mr-3"></i>
         Upgrade to Pro!
@@ -202,12 +186,10 @@
           >
             <a
               href="/dashboard/settings.html"
-              class="block px-4 py-2 account-link hover:text-white"
+              class="block px-4 py-2 account-link"
               >Account Settings</a
             >
-            <a
-              href="javascript:signOut();"
-              class="block px-4 py-2 account-link hover:text-white"
+            <a href="javascript:signOut();" class="block px-4 py-2 account-link"
               >Sign Out</a
             >
           </div>
@@ -217,7 +199,7 @@
       <!-- Mobile Header & Nav -->
       <header
         x-data="{ isOpen: false }"
-        class="w-full bg-sidebar py-5 px-6 sm:hidden"
+        class="w-full bg-gradient-to-tl from-violet-600 to-indigo-600 py-5 px-6 sm:hidden"
       >
         <div class="flex items-center justify-between">
           <a
@@ -238,44 +220,51 @@
         <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
           <a
             href="index.html"
-            class="flex items-center active-nav-link text-white py-2 pl-4 nav-item"
+            class="flex items-center p-6 font-bold text-center text-white align-middle border-2 border-b-solid text-white py-4 pl-4 nav-item"
           >
             <i class="fas fa-tachometer-alt mr-3"></i>
             Dashboard
           </a>
           <a
-            href="servers.html"
-            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
-          >
-            <i class="fas fa-sticky-note mr-3"></i>
-            Servers
-          </a>
-          <a
             href="bots.html"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
-            <i class="fas fa-table mr-3"></i>
+            <i class="fas fa-robot mr-3"></i>
             Bots
+          </a>
+          <a
+            href="servers.html"
+            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+          >
+            <i class="fas fa-server mr-3"></i>
+            Servers
           </a>
           <a
             href="users.html"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
-            <i class="fas fa-align-left mr-3"></i>
+            <i class="fas fa-users mr-3"></i>
             Users
+          </a>
+          <a
+            href="#"
+            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+          >
+            <i class="fas fa-database mr-3"></i>
+            Migrate
           </a>
           <a
             href="help.html"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
-            <i class="fas fa-align-left mr-3"></i>
+            <i class="fas fa-info mr-3"></i>
             Help
           </a>
           <a
             href="settings.html"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
-            <i class="fas fa-tablet-alt mr-3"></i>
+            <i class="fas fa-cog mr-3"></i>
             Account Settings
           </a>
           <a
@@ -296,7 +285,7 @@
           </a>
           <button
             id="upgrade-link-mobile"
-            class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center"
+            class="w-full bg-white font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center"
           >
             <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
           </button>
@@ -310,10 +299,17 @@
         <main class="w-full flex-grow p-6">
           <h1 class="text-3xl text-black pb-6">Dashboard</h1>
           <p class="text-lg text-gray-800 font-medium pb-4">
-            Make sure to read the <a href="/dashboard/help.html">help</a> page
+            Make sure to read the <a href="./dashboard/help.html">help</a> page
             for guides.
           </p>
-          <center>
+          <div class="text-center">
+            <p>
+              There is currently a bug with Discord causing users to not be able
+              to fully load the verify page on mobile, so captcha has been
+              globally disabled until Discord can fix this bug.
+            </p>
+          </div>
+          <!-- <center>
             <div class="w-full lg:w-1/2 my-6 pr-0 lg:pr-2">
               <p class="text-xl pb-6 flex items-center">
                 <i class="fas fa-list mr-3"></i> Migrate Users
@@ -409,7 +405,7 @@
               Make sure your bot has the correct permissions in the Guild you
               are attempting to migrate to.
             </p>
-          </center>
+          </center> -->
         </main>
       </div>
     </div>

@@ -1,16 +1,9 @@
 window.addEventListener("load", () => {
   // Get the form element
-  const form = document.getElementById("registerForm");
-
-  // Add 'submit' event handler
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    sendData(form);
-  });
 });
 
-async function sendData(form) {
+async function sendData() {
+  const form = document.getElementById("registerForm");
   const XHR = new XMLHttpRequest();
   // Bind the FormData object and the form element
   const FD = new FormData(form);
@@ -19,20 +12,34 @@ async function sendData(form) {
   FD.append("captchaCode", captchaCode);
   // Define what happens on successful data submission
   XHR.addEventListener("load", (event) => {
-    window.location.replace("https://discord.repair/login.html");
+    console.log(event);
+    let jsonData = JSON.parse(event.target.responseText);
+    if (jsonData.success == null || jsonData.success == "undefined") {
+      window.location.replace(
+        `${location.protocol}//${window.location.hostname}/login.html`
+      );
+      return;
+    } else {
+      grecaptcha.reset();
+      form.reset();
+      ToggleErrorModal(jsonData.details);
+      return;
+    }
   });
 
   // Define what happens in case of error
-  XHR.addEventListener("error", (event) => {
-    let jsonData = JSON.parse(event.target.responseText);
-    alert(jsonData.details);
+  XHR.addEventListener("error", (error) => {
+    console.log(error);
+    grecaptcha.reset();
+    form.reset();
+    ToggleErrorModal(error.target.responseText);
   });
 
   // Set up our request
   XHR.open("PUT", "https://api.discord.repair/v1/user");
   XHR.setRequestHeader("Content-Type", "application/json");
   if (FD.get("password") != FD.get("passwordCheck")) {
-    alert("Passwords do not match!");
+    ToggleErrorModal("Passwords do not match!");
     return;
   }
   FD.delete("passwordCheck");
@@ -43,6 +50,7 @@ async function sendData(form) {
   jsonRequest.password = arrayBufferToBase64(byteArr);
   // The data sent is what the user provided in the form
   json = JSON.stringify(jsonRequest);
+  console.log(json);
   XHR.send(json);
 }
 
@@ -63,4 +71,13 @@ function arrayBufferToBase64(buffer) {
     binary += String.fromCharCode(bytes[i]);
   }
   return window.btoa(binary);
+}
+
+function ToggleErrorModal(error) {
+  const modal = document.getElementById("errorModal");
+  modal.classList.toggle("hidden");
+  const body = document.querySelector("body");
+  body.classList.toggle("overflow-hidden");
+  const errorText = document.getElementById("errorModalText");
+  errorText.innerText = error;
 }

@@ -65,51 +65,37 @@
     <script defer src="/content/js/server.js"></script>
 
     <!--#endregion-->
-
-    <!-- Tailwind -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
-      rel="stylesheet"
-    />
     <style>
-      @import url("https://fonts.googleapis.com/css?family=Karla:400,700&display=swap");
-      .font-family-karla {
-        font-family: karla;
+      input:checked {
+        background-color: #22c55e; /* bg-green-500 */
       }
-      .bg-sidebar {
-        background: #3d68ff;
-      }
-      .cta-btn {
-        color: #3d68ff;
-      }
-      .upgrade-btn {
-        background: #1947ee;
-      }
-      .upgrade-btn:hover {
-        background: #0038fd;
-      }
-      .active-nav-link {
-        background: #1947ee;
-      }
-      .nav-item:hover {
-        background: #1947ee;
-      }
-      .account-link:hover {
-        background: #3d68ff;
+
+      input:checked ~ span:last-child {
+        --tw-translate-x: 1.75rem; /* translate-x-7 */
       }
     </style>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <script
+      src="https://kit.fontawesome.com/42d5adcbca.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+      rel="stylesheet"
+    />
   </head>
   <body class="bg-gray-100 font-family-karla flex">
-    <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+    <aside
+      class="relative bg-gradient-to-tl from-violet-600 to-indigo-600 h-screen w-64 hidden sm:block shadow-xl"
+    >
       <div class="p-6">
         <a
           href="index.html"
           class="text-white text-2xl font-semibold uppercase hover:text-gray-300"
           >Discord.Repair</a
         >
-        <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button> -->
       </div>
       <nav class="text-white text-base font-semibold pt-3">
         <a
@@ -120,38 +106,45 @@
           Dashboard
         </a>
         <a
-          href="servers.html"
-          class="flex items-center active-nav-link text-white py-4 pl-6 nav-item"
-        >
-          <i class="fas fa-align-left mr-3"></i>
-          Servers
-        </a>
-        <a
           href="bots.html"
           class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
-          <i class="fas fa-align-left mr-3"></i>
+          <i class="fas fa-robot mr-3"></i>
           Bots
+        </a>
+        <a
+          href="servers.html"
+          class="flex items-center align-middle transition-all bg-transparent border-0 cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro ease-soft-in tracking-tight-soft bg-gradient-to-tr from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85 border-b border-t text-white py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-server mr-3"></i>
+          Servers
         </a>
         <a
           href="users.html"
           class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
-          <i class="fas fa-align-left mr-3"></i>
+          <i class="fas fa-users mr-3"></i>
           Users
+        </a>
+        <a
+          href="#"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-database mr-3"></i>
+          Migrate
         </a>
         <a
           href="help.html"
           class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
-          <i class="fas fa-align-left mr-3"></i>
+          <i class="fas fa-info mr-3"></i>
           Help
         </a>
         <a
           href="settings.html"
           class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
-          <i class="fas fa-align-left mr-3"></i>
+          <i class="fas fa-cog mr-3"></i>
           Account Settings
         </a>
         <a
@@ -167,7 +160,7 @@
       <a
         id="upgrade-link"
         href="#"
-        class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4"
+        class="absolute w-full bottom-0 flex items-center justify-center p-6 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
       >
         <i class="fas fa-arrow-circle-up mr-3"></i>
         Upgrade to Pro!
@@ -196,12 +189,10 @@
           >
             <a
               href="/dashboard/settings.html"
-              class="block px-4 py-2 account-link hover:text-white"
+              class="block px-4 py-2 account-link"
               >Account Settings</a
             >
-            <a
-              href="javascript:signOut();"
-              class="block px-4 py-2 account-link hover:text-white"
+            <a href="javascript:signOut();" class="block px-4 py-2 account-link"
               >Sign Out</a
             >
           </div>
@@ -211,7 +202,7 @@
       <!-- Mobile Header & Nav -->
       <header
         x-data="{ isOpen: false }"
-        class="w-full bg-sidebar py-5 px-6 sm:hidden"
+        class="w-full bg-gradient-to-tl from-violet-600 to-indigo-600 py-5 px-6 sm:hidden"
       >
         <div class="flex items-center justify-between">
           <a
@@ -238,38 +229,45 @@
             Dashboard
           </a>
           <a
-            href="servers.html"
-            class="flex items-center active-nav-link text-white py-2 pl-4 nav-item"
-          >
-            <i class="fas fa-sticky-note mr-3"></i>
-            Servers
-          </a>
-          <a
             href="bots.html"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
-            <i class="fas fa-table mr-3"></i>
+            <i class="fas fa-robot mr-3"></i>
             Bots
+          </a>
+          <a
+            href="servers.html"
+            class="flex items-center p-6 font-bold text-center text-white align-middle border-2 border-b-solid text-white py-4 pl-4 nav-item"
+          >
+            <i class="fas fa-server mr-3"></i>
+            Servers
           </a>
           <a
             href="users.html"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
-            <i class="fas fa-align-left mr-3"></i>
+            <i class="fas fa-users mr-3"></i>
             Users
+          </a>
+          <a
+            href="#"
+            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+          >
+            <i class="fas fa-database mr-3"></i>
+            Migrate
           </a>
           <a
             href="help.html"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
-            <i class="fas fa-align-left mr-3"></i>
+            <i class="fas fa-info mr-3"></i>
             Help
           </a>
           <a
             href="settings.html"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
-            <i class="fas fa-tablet-alt mr-3"></i>
+            <i class="fas fa-cog mr-3"></i>
             Account Settings
           </a>
           <a
@@ -290,22 +288,402 @@
           </a>
           <button
             id="upgrade-link-mobile"
-            class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center"
+            class="w-full bg-white font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center"
           >
             <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
           </button>
         </nav>
-        <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button> -->
       </header>
 
       <div class="w-full overflow-x-hidden border-t flex flex-col">
-        <main class="w-full flex-grow p-6">
+        <!--Error Modal-->
+        <div id="errorModal" class="hidden">
+          <!--Overlay-->
+          <div
+            class="fixed z-10 top-0 left-0 w-full h-full bg-black opacity-50 modal-overlay"
+          ></div>
+          <!--Modal-->
+          <div
+            class="fixed z-50 overflow-y-auto top-1/3 right-0 left-0 justify-center items-center text-center flex mx-4"
+          >
+            <div
+              class="mx-auto min-w-0 mb-6 p-4 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border"
+            >
+              <!--Header-->
+              <div
+                class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
+              >
+                <h6
+                  class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-violet-600 to-indigo-600 bg-clip-text"
+                >
+                  An Error Occurred
+                </h6>
+              </div>
+              <!--Content-->
+              <div class="flex-auto px-2 pt-0 pb-2">
+                <div class="w-full">
+                  <p id="errorModalText">Some text</p>
+                </div>
+                <div
+                  class="text-center flex flex-wrap justify-center items-center mt-2"
+                >
+                  <button
+                    onclick="javascript:ToggleErrorModal();"
+                    class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Success Modal-->
+        <div id="successModal" class="hidden">
+          <!--Overlay-->
+          <div
+            class="fixed z-10 top-0 left-0 w-full h-full bg-black opacity-50 modal-overlay"
+          ></div>
+          <!--Modal-->
+          <div
+            class="fixed z-50 overflow-y-auto top-1/3 right-0 left-0 justify-center items-center text-center flex mx-4"
+          >
+            <div
+              class="mx-auto min-w-0 mb-6 p-4 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border"
+            >
+              <!--Header-->
+              <div
+                class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
+              >
+                <h6
+                  class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-violet-600 to-indigo-600 bg-clip-text"
+                >
+                  Successfully Completed Operation
+                </h6>
+              </div>
+              <!--Content-->
+              <div class="flex-auto px-2 pt-0 pb-2">
+                <div class="w-full">
+                  <p id="successModalText"></p>
+                </div>
+                <div
+                  class="text-center flex flex-wrap justify-center items-center mt-2"
+                >
+                  <button
+                    onclick="javascript:ToggleSuccessModal();"
+                    class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Delete Modal-->
+        <div id="deleteModal" class="hidden">
+          <!--Overlay-->
+          <div
+            class="fixed z-10 top-0 left-0 w-full h-full bg-black opacity-50 modal-overlay"
+          ></div>
+          <!--Modal-->
+          <div
+            class="fixed z-50 overflow-y-auto top-1/3 right-0 left-0 justify-center items-center text-center flex mx-4"
+          >
+            <div
+              class="mx-auto min-w-0 mb-6 p-4 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border"
+            >
+              <!--Header-->
+              <div
+                class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
+              >
+                <h6
+                  class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-violet-600 to-indigo-600 bg-clip-text"
+                >
+                  Delete Server Confirmation
+                </h6>
+              </div>
+              <!--Content-->
+              <div class="flex-auto px-2 pt-0 pb-2">
+                <div class="w-full">
+                  <p id="deleteModalText"></p>
+                </div>
+                <div
+                  class="text-center flex flex-wrap justify-center items-center mt-2"
+                >
+                  <button
+                    onclick="javascript:ToggleDeleteModal('');"
+                    class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
+                  >
+                    Close
+                  </button>
+                  <button
+                    id="deleteServerButton"
+                    onclick="javascript:ToggleDeleteModal('');"
+                    class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
+                  >
+                    Confim
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Modify Modal-->
+        <div id="modifyModal" class="hidden">
+          <!--Overlay-->
+          <div
+            class="fixed z-10 top-0 left-0 w-full h-full bg-black opacity-50 modal-overlay"
+          ></div>
+          <!--Modal-->
+          <div
+            class="fixed z-50 overflow-y-auto top-2 sm:top-10 right-0 left-0 justify-center items-center flex mx-4"
+          >
+            <div
+              class="mx-auto min-w-0 mb-6 p-4 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border"
+            >
+              <!--Header-->
+              <div
+                class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
+              >
+                <h6
+                  class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-violet-600 to-indigo-600 bg-clip-text"
+                >
+                  Modify Server
+                </h6>
+              </div>
+              <!--Content-->
+              <div class="flex-auto px-2 pt-0 pb-2">
+                <div class="w-full">
+                  <div class="leading-loose">
+                    <form id="modifyServerForm" class="">
+                      <div class="mt-2">
+                        <label
+                          class="block text-sm text-gray-600"
+                          for="cus_modifyName"
+                          >Name</label
+                        >
+                        <input
+                          class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
+                          id="cus_modifyName"
+                          name="name"
+                          type="text"
+                          required=""
+                          placeholder="Server Name"
+                          aria-label="Name"
+                        />
+                      </div>
+                      <div class="mt-2">
+                        <label
+                          class="block text-sm text-gray-600"
+                          for="cus_modifyKey"
+                          >Key</label
+                        >
+                        <input
+                          class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
+                          id="cus_modifyKey"
+                          name="key"
+                          type="text"
+                          disabled=""
+                          placeholder="Server Key"
+                          aria-label="Key"
+                        />
+                      </div>
+                      <div class="mt-2">
+                        <label
+                          class="block text-sm text-gray-600"
+                          for="cus_modifyVanityURL"
+                          >Vanity URL</label
+                        >
+                        <input
+                          class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
+                          id="cus_modifyVanityURL"
+                          name="vanityURL"
+                          type="url"
+                          placeholder="Vanity URL"
+                          aria-label="Vanity URL"
+                        />
+                      </div>
+                      <div class="inline-block mt-2 w-1/2 pr-1">
+                        <label
+                          class="block text-sm text-gray-600"
+                          for="cus_modifyGuildId"
+                          >Guild ID</label
+                        >
+                        <input
+                          class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
+                          id="cus_modifyGuildId"
+                          name="guildId"
+                          type="number"
+                          placeholder="Your Guild ID"
+                          aria-label="Guild"
+                        />
+                      </div>
+                      <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                        <label
+                          class="block text-sm text-gray-600"
+                          for="cus_modifyRoleId"
+                          >Role ID</label
+                        >
+                        <input
+                          class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
+                          id="cus_modifyRoleId"
+                          name="roleId"
+                          type="number"
+                          placeholder="Your Verify Role ID"
+                          aria-label="Role"
+                        />
+                      </div>
+                      <div class="inline-block mt-2 w-1/2 pr-1">
+                        <label
+                          class="flex items-center relative w-max cursor-pointer select-none"
+                        >
+                          <span class="text-sm text-gray-600 mr-3"
+                            >VPN Check</span
+                          >
+                          <input
+                            type="checkbox"
+                            id="cus_modifyVpnCheck"
+                            name="vpnCheck"
+                            class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500"
+                          />
+                          <span
+                            class="absolute font-medium text-xs uppercase right-1 text-white"
+                          >
+                            OFF
+                          </span>
+                          <span
+                            class="absolute font-medium text-xs uppercase right-8 text-white"
+                          >
+                            ON
+                          </span>
+                          <span
+                            class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200"
+                          />
+                        </label>
+                      </div>
+                      <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                        <label
+                          class="flex items-center relative w-max cursor-pointer select-none"
+                        >
+                          <span class="text-sm text-gray-600 mr-3"
+                            >Captcha Check</span
+                          >
+                          <input
+                            type="checkbox"
+                            id="cus_modifyCaptchaCheck"
+                            name="captchaCheck"
+                            class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500"
+                          />
+                          <span
+                            class="absolute font-medium text-xs uppercase right-1 text-white"
+                          >
+                            OFF
+                          </span>
+                          <span
+                            class="absolute font-medium text-xs uppercase right-8 text-white"
+                          >
+                            ON
+                          </span>
+                          <span
+                            class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200"
+                          />
+                        </label>
+                      </div>
+                      <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                        <label
+                          class="block text-sm text-gray-600"
+                          for="cus_modifyBot"
+                          >Bot</label
+                        >
+                        <select
+                          id="modifyServerSelectBot"
+                          class="w-full focus:shadow-soft-primary-outline cursor-pointer align-middle text-sm leading-5.6 bg-white bg-clip-padding ease-soft appearance-none rounded-lg border border-solid border-gray-300 px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
+                        ></select>
+                      </div>
+                      <div class="mt-2">
+                        <label
+                          class="block text-sm text-gray-600"
+                          for="cus_modifyWebhook"
+                          >Webhook URL</label
+                        >
+                        <input
+                          class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
+                          id="cus_modifyWebhook"
+                          name="webhook"
+                          type="url"
+                          placeholder="Webhook URL For Logging"
+                          aria-label="Webhook"
+                        />
+                      </div>
+                      <div class="mt-2">
+                        <label
+                          class="block text-sm text-gray-600"
+                          for="cus_modifyVerifyBGImage"
+                          >Verify Background Image</label
+                        >
+                        <input
+                          class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
+                          id="cus_modifyVerifyBGImage"
+                          name="verifyBGImage"
+                          type="url"
+                          placeholder="Verify Background Image"
+                          aria-label="Verify Background Image"
+                        />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div
+                  class="text-center flex flex-wrap justify-center items-center mt-2"
+                >
+                  <button
+                    onclick="javascript:ToggleModifyModal('');"
+                    class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
+                  >
+                    Close
+                  </button>
+                  <button
+                    id="modifyServerButton"
+                    onclick="javascript:ToggleModifyModal('');"
+                    class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
+                  >
+                    Confirm
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <main
+          class="w-full flex-grow p-6"
+          x-data="{createServerDiv: false, verifyMessageDiv: false, createServerButton: true, verifyMessageButton: true}"
+        >
           <h1 class="text-3xl text-black pb-6">Servers</h1>
-          <div class="flex flex-wrap">
-            <div class="w-full lg:w-1/2 my-6 pr-0 lg:pr-2">
-              <p class="text-xl pb-6 flex items-center">
+          <p
+            class="cursor-pointer text-xl flex items-center pb-3"
+            @click="createServerDiv = !createServerDiv; createServerButton = !createServerButton;"
+            x-show="createServerButton"
+          >
+            <i class="fas fa-list mr-3"></i> Create Server
+          </p>
+          <p
+            class="cursor-pointer text-xl flex items-center pb-3"
+            @click="verifyMessageDiv = !verifyMessageDiv; verifyMessageButton = !verifyMessageButton;"
+            x-show="verifyMessageButton"
+          >
+            <i class="fas fa-list mr-3"></i> Verify Message
+          </p>
+          <div class="flex flex-wrap justify-center">
+            <!--Create Server-->
+            <div
+              class="w-full lg:w-1/2 my-6 pr-0 lg:pr-2"
+              x-show="createServerDiv"
+            >
+              <p
+                class="cursor-pointer text-xl flex items-center pb-3"
+                @click="createServerDiv = !createServerDiv; createServerButton = !createServerButton;"
+              >
                 <i class="fas fa-list mr-3"></i> Create Server
               </p>
               <div class="leading-loose">
@@ -317,10 +695,10 @@
                     <label
                       class="block text-sm text-gray-600"
                       for="cus_createName"
-                      >Name</label
+                      >Name*</label
                     >
                     <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
                       id="cus_createName"
                       name="name"
                       type="text"
@@ -333,13 +711,13 @@
                     <label
                       class="block text-sm text-gray-600"
                       for="cus_createGuildId"
-                      >Guild ID</label
+                      >Guild ID*</label
                     >
                     <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
                       id="cus_createGuildId"
                       name="guildId"
-                      type="text"
+                      type="number"
                       required=""
                       placeholder="Your Guild ID"
                       aria-label="Guild"
@@ -352,59 +730,80 @@
                       >Role ID</label
                     >
                     <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
                       id="cus_createRoleId"
                       name="roleId"
-                      type="text"
+                      type="number"
                       placeholder="Your Verify Role ID"
                       aria-label="Role"
                     />
                   </div>
                   <div class="inline-block mt-2 w-1/2 pr-1">
                     <label
-                      class="block text-sm text-gray-600"
-                      for="cus_createVpnCheck"
-                      >VPN Check</label
+                      class="flex items-center relative w-max cursor-pointer select-none"
                     >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_createVpnCheck"
-                      name="vpnCheck"
-                      type="text"
-                      placeholder="True"
-                      aria-label="VPN"
-                    />
+                      <span class="text-sm text-gray-600 mr-3">VPN Check</span>
+                      <input
+                        checked=""
+                        type="checkbox"
+                        id="cus_createVpnCheck"
+                        name="vpnCheck"
+                        class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500"
+                      />
+                      <span
+                        class="absolute font-medium text-xs uppercase right-1 text-white"
+                      >
+                        OFF
+                      </span>
+                      <span
+                        class="absolute font-medium text-xs uppercase right-8 text-white"
+                      >
+                        ON
+                      </span>
+                      <span
+                        class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200"
+                      />
+                    </label>
                   </div>
                   <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
                     <label
-                      class="block text-sm text-gray-600"
-                      for="cus_createCaptchaCheck"
-                      >Captcha Check</label
+                      class="flex items-center relative w-max cursor-pointer select-none"
                     >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_createCaptchaCheck"
-                      name="captchaCheck"
-                      type="text"
-                      placeholder="True"
-                      aria-label="Captcha"
-                    />
+                      <span class="text-sm text-gray-600 mr-3"
+                        >Captcha Check</span
+                      >
+                      <input
+                        checked=""
+                        type="checkbox"
+                        id="cus_createCaptchaCheck"
+                        name="captchaCheck"
+                        class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500"
+                      />
+                      <span
+                        class="absolute font-medium text-xs uppercase right-1 text-white"
+                      >
+                        OFF
+                      </span>
+                      <span
+                        class="absolute font-medium text-xs uppercase right-8 text-white"
+                      >
+                        ON
+                      </span>
+                      <span
+                        class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200"
+                      />
+                    </label>
                   </div>
-                  <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                  <div class="inline-block mt-2 -mx-1 pl-1 w-full">
                     <label
                       class="block text-sm text-gray-600"
                       for="cus_createBot"
-                      >Bot</label
+                      >Main Bot*</label
                     >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_createBot"
-                      name="mainbot"
-                      type="text"
-                      required=""
-                      placeholder="Bot Name or Key"
-                      aria-label="Bot Name/Key"
-                    />
+                    <select
+                      id="createServerSelectBot"
+                      class="w-full focus:shadow-soft-primary-outline cursor-pointer align-middle text-sm leading-5.6 bg-white bg-clip-padding ease-soft appearance-none rounded-lg border border-solid border-gray-300 px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
+                    ></select>
                   </div>
                   <div class="mt-2">
                     <label
@@ -413,10 +812,10 @@
                       >Verify Background Image</label
                     >
                     <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
                       id="cus_createVerifyBGImage"
                       name="verifyBGImage"
-                      type="text"
+                      type="url"
                       placeholder="Verify Background Image URL"
                       aria-label="Verify Background Image URL"
                     />
@@ -428,214 +827,50 @@
                       >Webhook URL</label
                     >
                     <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
                       id="cus_createWebhook"
                       name="webhook"
-                      type="text"
+                      type="url"
                       placeholder="Webhook URL For Logging"
                       aria-label="Webhook"
                     />
                   </div>
-                  <div class="mt-6">
-                    <center>
-                      <button
-                        onclick="javascript:createServer();"
-                        class="px-8 py-1 m-1 text-white font-light tracking-wider bg-gray-900 rounded"
-                        type="button"
-                      >
-                        Create
-                      </button>
-                    </center>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="w-full lg:w-1/2 mt-6 pl-0 lg:pl-2">
-              <p class="text-xl pb-6 flex items-center">
-                <i class="fas fa-list mr-3"></i> Modify Server
-              </p>
-              <div class="leading-loose">
-                <form
-                  id="modifyServerForm"
-                  class="p-10 bg-white rounded shadow-xl"
-                >
-                  <p>Click "Get" before modifying an exisiting server.</p>
                   <div class="mt-2">
                     <label
                       class="block text-sm text-gray-600"
-                      for="cus_modifyName"
-                      >Name</label
-                    >
-                    <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_modifyName"
-                      name="name"
-                      type="text"
-                      required=""
-                      placeholder="Server Name"
-                      aria-label="Name"
-                    />
-                  </div>
-                  <div class="mt-2">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_modifyKey"
-                      >Key</label
-                    >
-                    <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_modifyKey"
-                      name="key"
-                      type="text"
-                      disabled=""
-                      placeholder="Server Key"
-                      aria-label="Key"
-                    />
-                  </div>
-                  <div class="mt-2">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_modifyVanityURL"
+                      for="cus_createVanityURL"
                       >Vanity URL</label
                     >
                     <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_modifyVanityURL"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
+                      id="cus_createVanityURL"
                       name="vanityURL"
                       type="url"
-                      disabled=""
-                      placeholder="Vanity URL"
-                      aria-label="Vanity URL"
+                      placeholder="https://discord.repair/server/vanity"
+                      aria-label="Vanity"
                     />
                   </div>
-                  <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_modifyGuildId"
-                      >Guild ID</label
+                  <div class="mt-6 flex justify-center">
+                    <button
+                      onclick="javascript:CreateServerAsync();"
+                      class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
+                      type="button"
                     >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_modifyGuildId"
-                      name="guildId"
-                      type="text"
-                      placeholder="Your Guild ID"
-                      aria-label="Guild"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_modifyRoleId"
-                      >Role ID</label
-                    >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_modifyRoleId"
-                      name="roleId"
-                      type="text"
-                      placeholder="Your Verify Role ID"
-                      aria-label="Role"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_modifyVpnCheck"
-                      >VPN Check</label
-                    >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_modifyVpnCheck"
-                      name="vpnCheck"
-                      type="text"
-                      placeholder="VPN Check"
-                      aria-label="VPN"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_modifyCaptchaCheck"
-                      >Captcha Check</label
-                    >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_modifyCaptchaCheck"
-                      name="captchaCheck"
-                      type="text"
-                      placeholder="Captcha Check"
-                      aria-label="Captcha"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_modifyBot"
-                      >Bot</label
-                    >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_modifyBot"
-                      name="mainbot"
-                      type="text"
-                      placeholder="Bot Name or Key"
-                      aria-label="Bot Name/Key"
-                    />
-                  </div>
-                  <div class="mt-2">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_modifyWebhook"
-                      >Webhook URL</label
-                    >
-                    <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_modifyWebhook"
-                      name="webhook"
-                      type="url"
-                      placeholder="Webhook URL For Logging"
-                      aria-label="Webhook"
-                    />
-                  </div>
-                  <div class="mt-2">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_modifyVerifyBGImage"
-                      >Verify Background Image</label
-                    >
-                    <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_modifyVerifyBGImage"
-                      name="verifyBGImage"
-                      type="url"
-                      placeholder="Verify Background Image"
-                      aria-label="Verify Background Image"
-                    />
-                  </div>
-                  <div class="mt-6">
-                    <center>
-                      <button
-                        onclick="javascript:getServer();"
-                        class="px-8 py-1 m-1 text-white font-light tracking-wider bg-gray-900 rounded"
-                        type="button"
-                      >
-                        Get
-                      </button>
-                      <button
-                        onclick="javascript:modifyServer();"
-                        class="px-8 py-1 m-1 text-white font-light tracking-wider bg-gray-900 rounded"
-                        type="button"
-                      >
-                        Modify
-                      </button>
-                    </center>
+                      Create Server
+                    </button>
                   </div>
                 </form>
               </div>
             </div>
-            <div class="w-full lg:w-1/2 my-6 pr-0 lg:pr-2">
-              <p class="text-xl pb-6 flex items-center">
+            <!--Verify Message-->
+            <div
+              class="w-full lg:w-1/2 my-6 pr-0 lg:pr-2"
+              x-show="verifyMessageDiv"
+            >
+              <p
+                class="cursor-pointer text-xl flex items-center pb-3"
+                @click="verifyMessageDiv = !verifyMessageDiv; verifyMessageButton = !verifyMessageButton;"
+              >
                 <i class="fas fa-list mr-3"></i> Verify Message
               </p>
               <div class="leading-loose">
@@ -651,7 +886,7 @@
                       >Title</label
                     >
                     <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
                       id="cus_verifyTitle"
                       name="title"
                       type="text"
@@ -663,28 +898,25 @@
                     <label
                       class="block text-sm text-gray-600"
                       for="cus_verifyServer"
-                      >Server Name</label
+                      >Server*</label
                     >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_verifyServer"
-                      name="server"
-                      type="text"
-                      placeholder="Server Name/Key"
-                      aria-label="Server"
-                    />
+                    <select
+                      id="verifyMessageSelectServer"
+                      class="w-full focus:shadow-soft-primary-outline cursor-pointer align-middle text-sm leading-5.6 bg-white bg-clip-padding ease-soft appearance-none rounded-lg border border-solid border-gray-300 px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
+                    ></select>
                   </div>
                   <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
                     <label
                       class="block text-sm text-gray-600"
                       for="cus_verifyChannelId"
-                      >Channel ID</label
+                      >Channel ID*</label
                     >
                     <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
                       id="cus_verifyChannelId"
                       name="channelId"
                       type="text"
+                      required=""
                       placeholder="Channel ID"
                       aria-label="Channel ID"
                     />
@@ -696,7 +928,7 @@
                       >Embed Colour</label
                     >
                     <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
                       id="cus_verifyEmbedColour"
                       name="embedColour"
                       type="text"
@@ -711,7 +943,7 @@
                       >Embed Description</label
                     >
                     <textarea
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
                       id="cus_verifyEmbedDescription"
                       name="embedDescription"
                       type="text"
@@ -726,7 +958,7 @@
                       >Footer Text</label
                     >
                     <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
                       id="cus_verifyFooterText"
                       name="footerText"
                       type="text"
@@ -741,10 +973,10 @@
                       >Image URL</label
                     >
                     <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
                       id="cus_imageUrl"
                       name="imageUrl"
-                      type="text"
+                      type="url"
                       placeholder="https://nebulamods.ca/content/images/logo-nebulamods.png"
                       aria-label="Image URL"
                     />
@@ -756,69 +988,28 @@
                       >Footer Icon URL</label
                     >
                     <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
+                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
                       id="cus_verifyFooterIcon"
                       name="footerIconUrl"
-                      type="text"
+                      type="url"
                       placeholder="https://nebulamods.ca/content/images/logo-nebulamods.png"
                       aria-label="Footer Icon URL"
                     />
                   </div>
-                  <div class="mt-6">
-                    <center>
-                      <button
-                        onclick="javascript:sendVerifyMessage();"
-                        class="px-8 py-1 m-1 text-white font-light tracking-wider bg-gray-900 rounded"
-                        type="button"
-                      >
-                        Send Verify Embed
-                      </button>
-                    </center>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="w-full lg:w-1/2 mt-6 pl-0 lg:pl-2">
-              <p class="text-xl pb-6 flex items-center">
-                <i class="fas fa-list mr-3"></i> Delete Server
-              </p>
-              <div class="leading-loose">
-                <form
-                  id="deleteServerForm"
-                  class="p-10 bg-white rounded shadow-xl"
-                >
-                  <div class="">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_deleteServer"
-                      >Name</label
+                  <div class="mt-6 flex justify-center">
+                    <button
+                      onclick="javascript:sendVerifyMessage();"
+                      class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
+                      type="button"
                     >
-                    <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_deleteServer"
-                      name="name"
-                      type="text"
-                      required=""
-                      placeholder="Your Server Name/Key"
-                      aria-label="Name"
-                    />
-                  </div>
-                  <div class="mt-6">
-                    <center>
-                      <button
-                        onclick="deleteServer();"
-                        class="px-4 py-1 m-1 text-white font-light tracking-wider bg-gray-900 rounded"
-                        type="button"
-                      >
-                        Delete
-                      </button>
-                    </center>
+                      Send Verify Embed
+                    </button>
                   </div>
                 </form>
               </div>
             </div>
           </div>
-          <div class="w-full mt-12">
+          <div class="w-full mt-6">
             <p class="text-xl pb-3 flex items-center">
               <i class="fas fa-list mr-3"></i> All Servers
             </p>
@@ -860,6 +1051,11 @@
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
                       Vanity URL
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Options
                     </th>
                   </tr>
                 </thead>

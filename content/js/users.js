@@ -16,7 +16,7 @@ async function loadUsers() {
       let username = row.insertCell(1);
       username.innerHTML = user.username;
       let ip = row.insertCell(2);
-      ip.innerHTML = user.ip;
+      ip.innerHTML = `<a target='_blank' href='https://nebulamods.ca/geolocation?ip=${user.ip}'>${user.ip}</a>`;
       let server = row.insertCell(3);
       server.innerHTML = user.serverName;
       let bot = row.insertCell(4);
