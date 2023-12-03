@@ -34,8 +34,8 @@
       content="Login to your account and access the dashboard."
     />
     <meta name="theme-color" content="#3d68ff" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <meta http-equiv="window-target" content="_top" />
+    <!-- <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="window-target" content="_top" /> -->
     <meta
       name="keywords"
       content="login,register,nebulamods,nebula,dashboard,account,discord,repair,restore,server,guild,bot,verify,backup,channels,emotes,emojis,stickers,settings,roles,migrate,free,paid,custom,custom-bot,discord.repair"
@@ -171,18 +171,22 @@
             class="rounded-lg bg-white text-left shadow-xl transition-all p-4 mb-2"
           >
             <div class="flex justify-center">
-              <img src="/content/images/logo.png" class="h-32" />
+              <img
+                src="/content/images/logo.png"
+                class="h-32 max-w-full"
+                alt="Discord.Repair Logo"
+              />
             </div>
-            <h3
+            <h1
               class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-violet-600 to-indigo-600 bg-clip-text"
             >
               Welcome back
-            </h3>
+            </h1>
             <p class="mb-0">
               Enter your username/email and password to sign in
             </p>
             <div class="flex-auto">
-              <form role="form" id="loginForm">
+              <form id="loginForm">
                 <label class="mb-2 ml-1 font-bold text-xs text-slate-700"
                   >Username/Email</label
                 >
@@ -195,9 +199,12 @@
                     name="user"
                     id="cus_email"
                     required
+                    autocomplete="current-password"
                   />
                 </div>
-                <label class="mb-2 ml-1 font-bold text-xs text-slate-700"
+                <label
+                  class="mb-2 ml-1 font-bold text-xs text-slate-700"
+                  aria-describedby="password-addon"
                   >Password</label
                 >
                 <div class="mb-4">

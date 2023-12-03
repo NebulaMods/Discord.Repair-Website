@@ -34,8 +34,8 @@
       content="Verify to recieve access to the server."
     />
     <meta name="theme-color" content="#3d68ff" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <meta http-equiv="window-target" content="_top" />
+    <!-- <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="window-target" content="_top" /> -->
     <meta
       name="keywords"
       content="login,register,nebulamods,nebula,dashboard,account,discord,repair,restore,server,guild,bot,verify,backup,channels,emotes,emojis,stickers,settings,roles,migrate,free,paid,custom,custom-bot,discord.repair"
@@ -179,7 +179,11 @@
             class="mt-20 rounded-lg bg-white text-center shadow-xl transition-all p-4 mb-2"
           >
             <div class="flex justify-center">
-              <img src="/content/images/logo.png" class="h-32" />
+              <img
+                src="/content/images/logo.png"
+                class="h-32 max-w-full"
+                alt="Discord.Repair Logo"
+              />
             </div>
             <h3
               class="relative z-10 font-bold text-2xl text-transparent bg-gradient-to-tl from-violet-600 to-indigo-600 bg-clip-text"
@@ -187,7 +191,7 @@
               Verification
             </h3>
             <div class="flex-auto hidden" id="hiddenDiv">
-              <form role="form" id="verifyForm">
+              <form id="verifyForm">
                 <div
                   class="g-recaptcha flex justify-center"
                   data-sitekey="6LclXFYhAAAAAKtivAx3g5EL4kWVF7AOZd6reaXF"
