@@ -124,11 +124,18 @@
           Users
         </a>
         <a
-          href="#"
+          href="backups.html"
           class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
           <i class="fas fa-database mr-3"></i>
-          Migrate
+          Backups
+        </a>
+        <a
+          href="restore.html"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+        >
+          <i class="fas fa-database mr-3"></i>
+          Restore
         </a>
         <a
           href="help.html"
@@ -247,11 +254,18 @@
             Users
           </a>
           <a
-            href="#"
+            href="backups.html"
             class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
             <i class="fas fa-database mr-3"></i>
-            Migrate
+            Backups
+          </a>
+          <a
+            href="restore.html"
+            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+          >
+            <i class="fas fa-database mr-3"></i>
+            Restore
           </a>
           <a
             href="help.html"
@@ -290,9 +304,6 @@
             <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
           </button>
         </nav>
-        <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button> -->
       </header>
 
       <div class="w-full overflow-x-hidden border-t flex flex-col">
@@ -305,107 +316,9 @@
           <div class="text-center">
             <p>
               There is currently a bug with Discord causing users to not be able
-              to fully load the verify page on mobile, so captcha has been
-              globally disabled until Discord can fix this bug.
+              to fully load the verify page on mobile.
             </p>
           </div>
-          <!-- <center>
-            <div class="w-full lg:w-1/2 my-6 pr-0 lg:pr-2">
-              <p class="text-xl pb-6 flex items-center">
-                <i class="fas fa-list mr-3"></i> Migrate Users
-              </p>
-              <div class="leading-loose">
-                <form id="migrateForm" class="p-10 bg-white rounded shadow-xl">
-                  <p>
-                    Enter your server or bot name/key then the Guild ID you wish
-                    to migrate your members to.
-                  </p>
-                  <div class="mt-2">
-                    <label class="block text-sm text-gray-600" for="cus_name"
-                      >Server or Bot Name</label
-                    >
-                    <input
-                      class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"
-                      id="cus_name"
-                      name="name"
-                      type="text"
-                      placeholder="Server or Bot Name/Key"
-                      aria-label="Server or Bot"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label class="block text-sm text-gray-600" for="cus_guildId"
-                      >Guild ID</label
-                    >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_guildId"
-                      name="guildId"
-                      type="text"
-                      placeholder="Guild ID"
-                      aria-label="Guild ID"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label class="block text-sm text-gray-600" for="cus_roleId"
-                      >Verify Role ID</label
-                    >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_roleId"
-                      name="roleId"
-                      type="text"
-                      placeholder="Verify Role ID"
-                      aria-label="Role ID"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label class="block text-sm text-gray-600" for="cus_userId"
-                      >User ID</label
-                    >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_userId"
-                      name="userId"
-                      type="text"
-                      placeholder="User ID"
-                      aria-label="User ID"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_userCount"
-                      >Amount to Migrate</label
-                    >
-                    <input
-                      class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                      id="cus_userCount"
-                      name="userCount"
-                      type="number"
-                      placeholder="Amount of users"
-                      aria-label="Amount of users"
-                    />
-                  </div>
-                  <div class="mt-6">
-                    <center>
-                      <button
-                        onclick="javascript:migrateUsers();"
-                        class="px-8 py-1 m-1 text-white font-light tracking-wider bg-gray-900 rounded"
-                        type="button"
-                      >
-                        Migrate Users
-                      </button>
-                    </center>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <p class="text-lg text-gray-800 font-medium pb-4">
-              Make sure your bot has the correct permissions in the Guild you
-              are attempting to migrate to.
-            </p>
-          </center> -->
         </main>
       </div>
     </div>
