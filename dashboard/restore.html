@@ -2,17 +2,17 @@
 <html lang="en">
   <head>
     <script defer src="/content/js/dash-utils.js"></script>
-    <title>Bots | Dashboard</title>
+    <title>Restore | Dashboard</title>
 
     <!--#region Meta Data-->
     <meta charset="UTF-8" />
-    <meta property="og:title" content="Bots | Dashboard" />
+    <meta property="og:title" content="Restore | Dashboard" />
     <meta
       property="og:url"
-      content="https://discord.repair/dashboard/bots.html"
+      content="https://discord.repair/dashboard/restore.html"
     />
-    <meta property="og:site_name" content="Manage your custom bots." />
-    <meta name="og:description" content="Manage your custom bots." />
+    <meta property="og:site_name" content="Manage your migrations/restores." />
+    <meta name="og:description" content="Manage your migrations/restores." />
     <meta
       name="og:image"
       content="https://discord.repair./content/images/logo.png"
@@ -20,7 +20,7 @@
     <meta name="twitter:card" content="summary_small_image" />
     <meta
       property="twitter:url"
-      content="https://discord.repair/dashboard/bots.html"
+      content="https://discord.repair/dashboard/restore.html"
     />
     <meta
       name="twitter:image"
@@ -62,7 +62,7 @@
       type="image/x-icon"
       href="/content/images/logo.ico"
     />
-    <script defer src="/content/js/bot.js"></script>
+    <script defer src="/content/js/restore.js"></script>
 
     <!--#endregion-->
 
@@ -100,7 +100,7 @@
         </a>
         <a
           href="bots.html"
-          class="flex items-center align-middle transition-all bg-transparent border-0 cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro ease-soft-in tracking-tight-soft bg-gradient-to-tr from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85 border-b border-t text-white py-4 pl-6 nav-item"
+          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
         >
           <i class="fas fa-robot mr-3"></i>
           Bots
@@ -128,7 +128,7 @@
         </a>
         <a
           href="restore.html"
-          class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+          class="flex items-center align-middle transition-all bg-transparent border-0 cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro ease-soft-in tracking-tight-soft bg-gradient-to-tr from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85 border-b border-t text-white py-4 pl-6 nav-item"
         >
           <i class="fas fa-database mr-3"></i>
           Restore
@@ -230,7 +230,7 @@
           </a>
           <a
             href="bots.html"
-            class="flex items-center p-6 font-bold text-center text-white align-middle border-2 border-b-solid text-white py-4 pl-4 nav-item"
+            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
           >
             <i class="fas fa-robot mr-3"></i>
             Bots
@@ -258,7 +258,7 @@
           </a>
           <a
             href="restore.html"
-            class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item"
+            class="flex items-center p-6 font-bold text-center text-white align-middle border-2 border-b-solid text-white py-4 pl-4 nav-item"
           >
             <i class="fas fa-database mr-3"></i>
             Restore
@@ -390,221 +390,17 @@
             </div>
           </div>
         </div>
-        <!--Delete Modal-->
-        <div id="deleteModal" class="hidden">
-          <!--Overlay-->
-          <div
-            class="fixed z-10 top-0 left-0 w-full h-full bg-black opacity-50 modal-overlay"
-          ></div>
-          <!--Modal-->
-          <div
-            class="fixed z-50 overflow-y-auto top-1/3 right-0 left-0 justify-center items-center text-center flex mx-4"
-          >
-            <div
-              class="mx-auto min-w-0 mb-6 p-4 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border"
-            >
-              <!--Header-->
-              <div
-                class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
-              >
-                <h6
-                  class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-violet-600 to-indigo-600 bg-clip-text"
-                >
-                  Delete Bot Confirmation
-                </h6>
-              </div>
-              <!--Content-->
-              <div class="flex-auto px-2 pt-0 pb-2">
-                <div class="w-full">
-                  <p id="deleteModalText">
-                    Warning this will delete all servers &amp; users assoicated
-                    with this bot.
-                  </p>
-                </div>
-                <div
-                  class="text-center flex flex-wrap justify-center items-center mt-2"
-                >
-                  <button
-                    onclick="javascript:ToggleDeleteModal('');"
-                    class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
-                  >
-                    Close
-                  </button>
-                  <button
-                    id="deleteBotButton"
-                    onclick="javascript:ToggleDeleteModal('');"
-                    class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
-                  >
-                    Confim
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--Modify Modal-->
-        <div id="modifyModal" class="hidden">
-          <!--Overlay-->
-          <div
-            class="fixed z-10 top-0 left-0 w-full h-full bg-black opacity-50 modal-overlay"
-          ></div>
-          <!--Modal-->
-          <div
-            class="fixed z-50 overflow-y-auto top-1/5 right-0 left-0 justify-center items-center flex mx-4"
-          >
-            <div
-              class="mx-auto min-w-0 mb-6 p-4 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border"
-            >
-              <!--Header-->
-              <div
-                class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent"
-              >
-                <h6
-                  class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-violet-600 to-indigo-600 bg-clip-text"
-                >
-                  Modify Bot
-                </h6>
-              </div>
-              <!--Content-->
-              <div class="flex-auto px-2 pt-0 pb-2">
-                <div class="w-full">
-                  <div class="leading-loose">
-                    <form id="modifyBotForm" class="">
-                      <div class="mt-2">
-                        <label
-                          class="block text-sm text-gray-600"
-                          for="cus_modifyName"
-                          >Name</label
-                        >
-                        <input
-                          class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
-                          id="cus_modifyName"
-                          name="name"
-                          type="text"
-                          placeholder="Bot Name"
-                          aria-label="Name"
-                        />
-                      </div>
-                      <div class="mt-2">
-                        <label
-                          class="block text-sm text-gray-600"
-                          for="cus_modifyKey"
-                          >Key</label
-                        >
-                        <input
-                          class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
-                          id="cus_modifyKey"
-                          name="key"
-                          type="text"
-                          disabled=""
-                          placeholder="Bot Key/ID"
-                          aria-label="Key"
-                        />
-                      </div>
-                      <div class="inline-block mt-2 w-1/2 pr-1">
-                        <label
-                          class="block text-sm text-gray-600"
-                          for="cus_modifyClientSecret"
-                          >Client Secret</label
-                        >
-                        <input
-                          class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
-                          id="cus_modifyClientSecret"
-                          name="clientSecret"
-                          type="text"
-                          placeholder="Client Secret"
-                          aria-label="Client Secret"
-                        />
-                      </div>
-                      <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                        <label
-                          class="block text-sm text-gray-600"
-                          for="cus_modifyClientId"
-                          >Client ID</label
-                        >
-                        <input
-                          class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
-                          id="cus_modifyClientId"
-                          name="clientId"
-                          type="text"
-                          placeholder="Client ID"
-                          aria-label="Client ID"
-                        />
-                      </div>
-                      <div class="inline-block mt-2 w-1/2 pr-1">
-                        <label
-                          class="block text-sm text-gray-600"
-                          for="cus_modifyBotType"
-                          >Bot Type</label
-                        >
-                        <select
-                          id="modifySelectBotType"
-                          class="focus:shadow-soft-primary-outline cursor-pointer align-middle text-sm leading-5.6 bg-white bg-clip-padding ease-soft appearance-none rounded-lg border border-solid border-gray-300 px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
-                        >
-                          <option>EVERYTHING</option>
-                          <option>MAIN</option>
-                          <option>AUTH</option>
-                          <option>MESSAGES</option>
-                        </select>
-                        <!-- <input
-                          class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
-                          id="cus_modifyBotType"
-                          name="botType"
-                          type="text"
-                          placeholder="EVERYTHING"
-                          aria-label="Bot Type"
-                        /> -->
-                      </div>
-                      <div class="mt-2">
-                        <label
-                          class="block text-sm text-gray-600"
-                          for="cus_modifyToken"
-                          >Token</label
-                        >
-                        <input
-                          class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
-                          id="cus_modifyToken"
-                          name="token"
-                          type="text"
-                          placeholder="Bot's Token"
-                          aria-label="Token"
-                        />
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div
-                  class="text-center flex flex-wrap justify-center items-center mt-2"
-                >
-                  <button
-                    onclick="javascript:ToggleModifyModal('');"
-                    class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
-                  >
-                    Close
-                  </button>
-                  <button
-                    id="modifyBotButton"
-                    onclick="javascript:ToggleModifyModal('');"
-                    class="px-6 py-3 mx-2 mt-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
-                  >
-                    Confirm
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <main
           class="w-full flex-grow p-6"
           x-data="{createBotDiv: false, createbotButton: true}"
         >
-          <h1 class="text-3xl text-black mb-2">Bots</h1>
+          <h1 class="text-3xl text-black mb-2">Restore</h1>
           <p
             class="cursor-pointer text-xl flex items-center pb-3"
             @click="createBotDiv = !createBotDiv; createbotButton = !createbotButton;"
             x-show="createbotButton"
           >
-            <i class="fas fa-list mr-3"></i> Create Bot
+            <i class="fas fa-list mr-3"></i> Restore Members
           </p>
           <div class="flex flex-wrap justify-center" x-show="createBotDiv">
             <!--Hidden Create Bot-->
@@ -613,116 +409,74 @@
                 class="cursor-pointer text-xl flex items-center pb-3"
                 @click="createBotDiv = !createBotDiv; createbotButton = !createbotButton;"
               >
-                <i class="fas fa-list mr-3"></i> Create Bot
+                <i class="fas fa-list mr-3"></i> Restore Members
               </p>
               <div class="leading-loose">
                 <form
-                  id="createBotForm"
+                  id="restoreMembersForm"
                   class="p-10 bg-white rounded shadow-xl"
                 >
                   <div class="mt-2">
                     <label
                       class="block text-sm text-gray-600"
-                      for="cus_createName"
-                      >Name*</label
+                      for="cus_restoreMembers"
+                      >Server*</label
                     >
-                    <input
-                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
-                      id="cus_createName"
-                      name="name"
-                      type="text"
+                    <select
+                      id="restoreMembersSelectServer"
+                      name="serverName"
                       required=""
-                      placeholder="Bot Name"
-                      aria-label="Name"
-                    />
+                      class="w-full focus:shadow-soft-primary-outline cursor-pointer align-middle text-sm leading-5.6 bg-white bg-clip-padding ease-soft appearance-none rounded-lg border border-solid border-gray-300 px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
+                    ></select>
                   </div>
                   <div class="inline-block mt-2 w-1/2 pr-1">
                     <label
                       class="block text-sm text-gray-600"
-                      for="cus_createClientSecret"
-                      >Client Secret*</label
+                      for="cus_restoreMembersGuildId"
+                      >Guild ID*</label
                     >
                     <input
                       class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
-                      id="cus_createClientSecret"
-                      name="clientSecret"
-                      type="text"
+                      id="cus_restoreMembersGuildId"
+                      name="guildId"
+                      type="number"
                       required=""
-                      placeholder="Client Secret"
-                      aria-label="Client Secret"
+                      placeholder="Guild Id"
+                      aria-label="Guild Id"
                     />
                   </div>
                   <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
                     <label
                       class="block text-sm text-gray-600"
-                      for="cus_createClientId"
-                      >Client ID*</label
+                      for="cus_restoreMembersRoleId"
+                      >Role ID</label
                     >
                     <input
                       class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
-                      id="cus_createClientId"
-                      name="clientId"
-                      type="text"
-                      required=""
-                      placeholder="Client ID"
-                      aria-label="Client ID"
-                    />
-                  </div>
-                  <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_createBotType"
-                      >Bot Type</label
-                    >
-                    <select
-                      id="createSelectBotType"
-                      class="focus:shadow-soft-primary-outline cursor-pointer align-middle text-sm leading-5.6 bg-white bg-clip-padding ease-soft appearance-none rounded-lg border border-solid border-gray-300 px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
-                    >
-                      <datalist class="mt-2 bg-white border rounded shadow-md">
-                        <option
-                          class="hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
-                        >
-                          EVERYTHING
-                        </option>
-                        <option>MAIN</option>
-                        <option>AUTH</option>
-                        <option>MESSAGES</option>
-                      </datalist>
-                    </select>
-                  </div>
-                  <div class="mt-2">
-                    <label
-                      class="block text-sm text-gray-600"
-                      for="cus_createToken"
-                      >Token*</label
-                    >
-                    <input
-                      class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-violet-600 focus:outline-none focus:transition-shadow"
-                      id="cus_createToken"
-                      name="token"
-                      type="text"
-                      required=""
-                      placeholder="Bot's Token"
-                      aria-label="Token"
+                      id="cus_restoreMembersRoleId"
+                      name="roleId"
+                      type="number"
+                      placeholder="Role Id"
+                      aria-label="Role Id"
                     />
                   </div>
                   <div class="mt-6 flex justify-center">
                     <button
-                      onclick="javascript:createBot();"
+                      onclick="javascript:RestoreMembersAsync();"
                       class="px-6 py-3 mx-2 mt-2 w-1/2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-violet-600 to-indigo-600 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
                       type="button"
                     >
-                      Create Bot
+                      Restore Members
                     </button>
                   </div>
                 </form>
               </div>
             </div>
           </div>
-          <!--Bots Table-->
+          <!--Restores Table-->
           <div class="w-full mt-6">
             <p class="text-xl pb-3 flex items-center">
-              <i class="fas fa-list mr-3"></i> All Bots
+              <i class="fas fa-list mr-3"></i> All Restores
             </p>
             <div class="bg-white overflow-auto">
               <table class="min-w-full bg-white">
@@ -731,31 +485,71 @@
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm w-1/3"
                     >
-                      Name
+                      Server Name
                     </th>
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
-                      Client Secret
+                      Bot Name
                     </th>
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
-                      Client ID
+                      Start Time
                     </th>
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm break-words"
                     >
-                      Token
+                      Completion Time
                     </th>
                     <th
                       class="text-left py-3 px-4 uppercase font-semibold text-sm"
                     >
-                      Options
+                      Status
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Total Member Amount
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      New Guild ID
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      New Role ID
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Failed Amount
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Successful Amount
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Invalid OAuth Amount
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Already In Guild Amount
+                    </th>
+                    <th
+                      class="text-left py-3 px-4 uppercase font-semibold text-sm"
+                    >
+                      Extra Details
                     </th>
                   </tr>
                 </thead>
-                <tbody class="text-gray-700" id="allBots"></tbody>
+                <tbody class="text-gray-700" id="allRestores"></tbody>
               </table>
             </div>
           </div>
