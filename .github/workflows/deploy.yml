@@ -24,7 +24,7 @@ jobs:
           server: ${{ secrets.CHICAGO_SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           ssh_private_key: ${{ secrets.CHICAGO_SSH_KEY }}
-          local_path: "./src/public/*"
+          local_path: "./public/*"
           remote_path: "/var/www/html/discord.repair/public"
           args: "-o ConnectTimeout=5"
 
@@ -35,7 +35,7 @@ jobs:
           server: ${{ secrets.TORONTO_SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           ssh_private_key: ${{ secrets.TORONTO_SSH_KEY }}
-          local_path: "./src/public/*"
+          local_path: "./public/*"
           remote_path: "/var/www/html/discord.repair/public"
           args: "-o ConnectTimeout=5"
 
@@ -53,7 +53,7 @@ jobs:
           server: ${{ secrets.CHICAGO_SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           ssh_private_key: ${{ secrets.CHICAGO_SSH_KEY }}
-          local_path: "./src/public/*"
+          local_path: "./public/*"
           remote_path: "/var/www/html/discord.repair/beta"
           args: "-o ConnectTimeout=5"
 
@@ -63,7 +63,7 @@ jobs:
           server: ${{ secrets.TORONTO_SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           ssh_private_key: ${{ secrets.TORONTO_SSH_KEY }}
-          local_path: "./src/public/*"
+          local_path: "./public/*"
           remote_path: "/var/www/html/discord.repair/beta"
           args: "-o ConnectTimeout=5"
 
@@ -81,7 +81,7 @@ jobs:
           server: ${{ secrets.CHICAGO_SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           ssh_private_key: ${{ secrets.CHICAGO_SSH_KEY }}
-          local_path: "./src/public/*"
+          local_path: "./public/*"
           remote_path: "/var/www/html/discord.repair/dev"
           args: "-o ConnectTimeout=5"
 
@@ -91,6 +91,6 @@ jobs:
           server: ${{ secrets.TORONTO_SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           ssh_private_key: ${{ secrets.TORONTO_SSH_KEY }}
-          local_path: "./src/public/*"
+          local_path: "./public/*"
           remote_path: "/var/www/html/discord.repair/dev"
           args: "-o ConnectTimeout=5"
